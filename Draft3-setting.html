@@ -1,0 +1,584 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bside.art - Settings</title>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+body {
+font-family: 'Inter', sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+/* App container scroll behavior */
+.hide-scrollbar::-webkit-scrollbar {
+display: none;
+}
+.hide-scrollbar {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+/* Screen Transitions */
+.screen {
+transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+position: absolute;
+inset: 0;
+background-color: #171717; /* neutral-900 */
+display: flex;
+flex-direction: column;
+opacity: 0;
+pointer-events: none;
+transform: translateX(20px);
+z-index: 10;
+}
+.screen.active {
+opacity: 1;
+pointer-events: auto;
+transform: translateX(0);
+z-index: 20;
+}
+/* Overlay screens enter from right */
+.screen-overlay {
+position: absolute;
+inset: 0;
+background-color: #171717;
+transform: translateX(100%);
+transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+z-index: 30;
+display: flex;
+flex-direction: column;
+}
+.screen-overlay.open {
+transform: translateX(0);
+}
+/* Custom Form Elements */
+.input-dark {
+background-color: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.08);
+transition: all 0.2s ease;
+}
+.input-dark:focus {
+background-color: rgba(255, 255, 255, 0.05);
+border-color: rgba(255, 255, 255, 0.2);
+outline: none;
+}
+/* Custom Toggle Switch */
+.toggle-switch {
+width: 44px;
+height: 24px;
+background-color: #262626;
+border-radius: 9999px;
+position: relative;
+transition: background-color 0.2s ease;
+cursor: pointer;
+border: 1px solid rgba(255,255,255,0.1);
+}
+.toggle-switch.active {
+background-color: #fff;
+border-color: #fff;
+}
+.toggle-knob {
+width: 20px;
+height: 20px;
+background-color: #a3a3a3;
+border-radius: 50%;
+position: absolute;
+top: 1px;
+left: 1px;
+transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
+box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.toggle-switch.active .toggle-knob {
+transform: translateX(20px);
+background-color: #000;
+}
+</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="bg-neutral-950 h-screen w-full flex items-center justify-center overflow-hidden text-neutral-100 selection:bg-neutral-800">
+
+    <!-- Mobile Container -->
+    <div class="relative w-full h-full max-w-[375px] bg-neutral-900 sm:h-[800px] sm:max-h-[90vh] sm:rounded-[32px] sm:shadow-2xl sm:border sm:border-neutral-800 overflow-hidden flex flex-col ring-1 ring-white/5">
+
+        <!-- SCREEN 1: MAIN SETTINGS (MY PAGE) -->
+        <div id="main-settings" class="screen active overflow-hidden">
+            <!-- Consistent Header: Main Page -->
+            <div class="h-14 px-2 flex items-center justify-between sticky top-0 bg-neutral-900/90 backdrop-blur-md z-30 border-b border-white/5 shrink-0">
+                <div class="flex items-center gap-2">
+                    <button onclick="Router.goToDraftSelector()" class="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-neutral-300 hover:bg-white/10 hover:text-white transition-all active:scale-95 bg-white/5">
+                        Drafts
+                    </button>
+                </div>
+                <span class="text-[15px] font-medium text-white tracking-tight absolute left-1/2 transform -translate-x-1/2">My Page</span>
+                <button class="flex hover:text-white hover:bg-white/5 transition-colors text-neutral-400 w-10 h-10 rounded-full items-center justify-center" onclick="Router.navigate('home')" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="22" height="22" viewBox="0 0 24 24" data-icon="lucide:x" data-width="22" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="flex-1 flex flex-col px-5 pt-6 pb-6">
+                <!-- Profile Section -->
+                <div class="flex flex-col items-center mb-6 shrink-0">
+                    <div class="w-20 h-20 rounded-full p-1 border border-neutral-700 relative mb-3">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-full rounded-full object-cover grayscale-[20%]" alt="User">
+                    </div>
+                    <h1 class="text-lg font-medium tracking-tight text-white mb-1">Elena Morris</h1>
+                    <button onclick="openScreen('edit-profile')" class="px-3 py-1 rounded-full border border-neutral-700 text-[11px] text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors">
+                        Profile Edit
+                    </button>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-3 gap-2 mb-6 shrink-0">
+                    <div class="bg-white/5 border border-white/5 rounded-xl py-2.5 px-1 flex flex-col items-center justify-center gap-0.5 group hover:bg-white/10 transition-colors cursor-default">
+                        <span class="text-[9px] uppercase leading-tight text-neutral-400 tracking-wider text-center">Capture Artworks</span>
+                        <span class="text-base font-medium text-white tracking-tight">1,428</span>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-xl py-2.5 px-1 flex flex-col items-center justify-center gap-0.5 group hover:bg-white/10 transition-colors cursor-default">
+                        <span class="text-[9px] uppercase leading-tight text-neutral-400 tracking-wider text-center">Following Artists</span>
+                        <span class="text-base font-medium text-white tracking-tight">385</span>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-xl py-2.5 px-1 flex flex-col items-center justify-center gap-0.5 group hover:bg-white/10 transition-colors cursor-default">
+                        <span class="text-[9px] uppercase leading-tight text-neutral-400 tracking-wider text-center">My Comments</span>
+                        <span class="text-base font-medium text-white tracking-tight">271</span>
+                    </div>
+                </div>
+
+                <!-- Menu List -->
+                <div class="flex flex-col gap-1 flex-1 min-h-0">
+                    <button onclick="openScreen('apply-artist')" class="w-full text-left py-3 px-3 bg-transparent hover:bg-white/5 rounded-lg flex items-center justify-between group transition-colors border border-transparent hover:border-white/5 shrink-0">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="13" height="13" viewBox="0 0 24 24" data-icon="lucide:palette" data-width="13" data-stroke-width="1.5" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 22a1 1 0 0 1 0-20a10 9 0 0 1 10 9a5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></g></svg>
+                            </div>
+                            <span class="text-[13px] text-neutral-200">Apply to Artist</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:chevron-right" data-width="14" class="iconify text-neutral-600 group-hover:text-neutral-400 transition-colors iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"></path></svg>
+                    </button>
+
+                    <button onclick="openScreen('account-settings')" class="w-full text-left py-3 px-3 bg-transparent hover:bg-white/5 rounded-lg flex items-center justify-between group transition-colors border border-transparent hover:border-white/5 shrink-0">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="13" height="13" viewBox="0 0 24 24" data-icon="lucide:settings" data-width="13" data-stroke-width="1.5" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0a2.34 2.34 0 0 0 3.319 1.915a2.34 2.34 0 0 1 2.33 4.033a2.34 2.34 0 0 0 0 3.831a2.34 2.34 0 0 1-2.33 4.033a2.34 2.34 0 0 0-3.319 1.915a2.34 2.34 0 0 1-4.659 0a2.34 2.34 0 0 0-3.32-1.915a2.34 2.34 0 0 1-2.33-4.033a2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></g></svg>
+                            </div>
+                            <span class="text-[13px] text-neutral-200">Account Setting</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:chevron-right" data-width="14" class="iconify text-neutral-600 group-hover:text-neutral-400 transition-colors iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"></path></svg>
+                    </button>
+
+                    <button onclick="openScreen('terms')" class="w-full text-left py-3 px-3 bg-transparent hover:bg-white/5 rounded-lg flex items-center justify-between group transition-colors border border-transparent hover:border-white/5 shrink-0">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="13" height="13" viewBox="0 0 24 24" data-icon="lucide:file-text" data-width="13" data-stroke-width="1.5" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5M10 9H8m8 4H8m8 4H8"></path></g></svg>
+                            </div>
+                            <span class="text-[13px] text-neutral-200">Terms of Use</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:chevron-right" data-width="14" class="iconify text-neutral-600 group-hover:text-neutral-400 transition-colors iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"></path></svg>
+                    </button>
+
+                    <button onclick="openScreen('safety')" class="w-full text-left py-3 px-3 bg-transparent hover:bg-white/5 rounded-lg flex items-center justify-between group transition-colors border border-transparent hover:border-white/5 shrink-0">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="13" height="13" viewBox="0 0 24 24" data-icon="lucide:shield" data-width="13" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+                            </div>
+                            <span class="text-[13px] text-neutral-200">Safety &amp; Privacy</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:chevron-right" data-width="14" class="iconify text-neutral-600 group-hover:text-neutral-400 transition-colors iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"></path></svg>
+                    </button>
+
+                    <button onclick="openScreen('contact')" class="w-full text-left py-3 px-3 bg-transparent hover:bg-white/5 rounded-lg flex items-center justify-between group transition-colors border border-transparent hover:border-white/5 shrink-0">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="13" height="13" viewBox="0 0 24 24" data-icon="lucide:mail" data-width="13" data-stroke-width="1.5" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m22 7l-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect width="20" height="16" x="2" y="4" rx="2"></rect></g></svg>
+                            </div>
+                            <span class="text-[13px] text-neutral-200">Contact</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:chevron-right" data-width="14" class="iconify text-neutral-600 group-hover:text-neutral-400 transition-colors iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"></path></svg>
+                    </button>
+
+                    <button class="w-full py-3 mt-4 rounded-xl border border-red-500/10 bg-red-500/5 hover:bg-red-500/10 text-red-500 hover:text-red-400 text-[13px] font-medium transition-all flex items-center justify-center gap-2 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="13" height="13" viewBox="0 0 24 24" data-icon="lucide:log-out" data-width="13" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 17l5-5l-5-5m5 5H9m0 9H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+                        Log Out
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- SCREEN 2: PROFILE EDIT -->
+        <!-- ============================================== -->
+        <div id="edit-profile" class="screen-overlay overflow-y-auto hide-scrollbar">
+            <!-- Consistent Header: Sub Page -->
+            <div class="h-14 px-2 flex items-center justify-between sticky top-0 bg-neutral-900/90 backdrop-blur-md z-30 border-b border-white/5 shrink-0">
+                <button onclick="closeScreen('edit-profile')" class="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:chevron-left" data-width="24" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-6-6l6-6"></path></svg>
+                </button>
+                <span class="text-[15px] font-medium text-white tracking-tight absolute left-1/2 transform -translate-x-1/2">Profile Edit</span>
+                <div class="w-10"></div> <!-- Spacer -->
+            </div>
+
+            <div class="p-6 flex flex-col items-center">
+                <div class="relative group cursor-pointer mb-10">
+                    <div class="w-32 h-32 rounded-full border-2 border-neutral-800 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 group-hover:opacity-50 transition-opacity">
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="32" height="32" viewBox="0 0 24 24" data-icon="lucide:camera" data-width="32" data-stroke-width="1.5" class="iconify text-white iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"></path><circle cx="12" cy="13" r="3"></circle></g></svg>
+                    </div>
+                    <div class="absolute bottom-1 right-1 bg-white text-black p-2 rounded-full shadow-lg border-2 border-neutral-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:camera" data-width="14" data-stroke-width="2" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"></path><circle cx="12" cy="13" r="3"></circle></g></svg>
+                    </div>
+                </div>
+
+                <div class="w-full space-y-6">
+                    <div>
+                        <label class="text-xs font-medium text-neutral-400 mb-2 block ml-1">Nickname</label>
+                        <input type="text" value="Elena Morris" class="w-full input-dark rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-600 focus:ring-1 focus:ring-white/20">
+                    </div>
+                    
+                    <button onclick="closeScreen('edit-profile')" class="w-full bg-white hover:bg-neutral-200 text-black font-medium text-sm py-3.5 rounded-xl transition-colors mt-8">
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- SCREEN 3: APPLY TO ARTIST -->
+        <!-- ============================================== -->
+        <div id="apply-artist" class="screen-overlay overflow-y-auto hide-scrollbar">
+            <!-- Consistent Header: Sub Page -->
+            <div class="h-14 px-2 flex items-center justify-between sticky top-0 bg-neutral-900/90 backdrop-blur-md z-30 border-b border-white/5 shrink-0">
+                <button onclick="closeScreen('apply-artist')" class="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:chevron-left" data-width="24" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-6-6l6-6"></path></svg>
+                </button>
+                <span class="text-[15px] font-medium text-white tracking-tight absolute left-1/2 transform -translate-x-1/2">Apply to Artist</span>
+                <div class="w-10"></div> <!-- Spacer -->
+            </div>
+
+            <div class="p-6 pb-32">
+                <form onsubmit="event.preventDefault(); closeScreen('apply-artist');" class="space-y-5">
+                    <div>
+                        <label class="text-xs font-medium text-neutral-400 mb-2 block ml-1">Artist Name</label>
+                        <input type="text" placeholder="e.g. Elena Morris" class="w-full input-dark rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-600 focus:ring-1 focus:ring-white/20">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-medium text-neutral-400 mb-2 block ml-1">Artist Description</label>
+                        <textarea rows="4" placeholder="Tell us about your style, medium, and inspiration..." class="w-full input-dark rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-600 focus:ring-1 focus:ring-white/20 resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-medium text-neutral-400 mb-2 block ml-1">Gallery Representation</label>
+                        <input type="text" placeholder="Pipe Gallery" class="w-full input-dark rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-600 focus:ring-1 focus:ring-white/20">
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-medium text-neutral-400 mb-2 block ml-1">CV / Portfolio</label>
+                        <div class="w-full border border-dashed border-neutral-700 hover:border-neutral-500 rounded-xl p-6 flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors bg-white/5 hover:bg-white/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:upload-cloud" data-width="24" data-stroke-width="1.5" class="iconify text-neutral-400 iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 13v8m-8-6.101A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="m8 17l4-4l4 4"></path></g></svg>
+                            <span class="text-xs text-neutral-400">Upload PDF (Max 10MB)</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="flex items-center justify-between mb-2 px-1">
+                            <label class="text-xs font-medium text-neutral-400">SNS Link</label>
+                            <button type="button" class="text-[10px] bg-neutral-800 hover:bg-neutral-700 text-white px-2 py-1 rounded transition-colors flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="10" height="10" viewBox="0 0 24 24" data-icon="lucide:plus" data-width="10" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"></path></svg> Add
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex gap-2">
+                                <div class="relative w-1/3">
+                                    <select class="w-full input-dark appearance-none rounded-lg px-3 py-2.5 text-xs text-white bg-transparent focus:ring-1 focus:ring-white/20">
+                                        <option class="bg-neutral-900">Instagram</option>
+                                        <option class="bg-neutral-900">Twitter</option>
+                                    </select>
+                                    <div class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 24 24" data-icon="lucide:chevron-down" data-width="12" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"></path></svg>
+                                    </div>
+                                </div>
+                                <div class="relative flex-1">
+                                    <input type="text" value="https://instagram.com/elena_m" class="w-full input-dark rounded-lg px-3 py-2.5 text-xs text-white focus:ring-1 focus:ring-white/20">
+                                </div>
+                                <button type="button" class="text-neutral-500 hover:text-red-400 transition-colors p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:trash-2" data-width="14" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11v6m4-6v6m5-11v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-white hover:bg-neutral-200 text-black font-medium text-sm py-3.5 rounded-xl transition-colors shadow-lg shadow-white/5">
+                            Send Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- SCREEN 4: ACCOUNT SETTINGS -->
+        <!-- ============================================== -->
+        <div id="account-settings" class="screen-overlay overflow-y-auto hide-scrollbar">
+            <!-- Consistent Header: Sub Page -->
+            <div class="h-14 px-2 flex items-center justify-between sticky top-0 bg-neutral-900/90 backdrop-blur-md z-30 border-b border-white/5 shrink-0">
+                <button onclick="closeScreen('account-settings')" class="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:chevron-left" data-width="24" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-6-6l6-6"></path></svg>
+                </button>
+                <span class="text-[15px] font-medium text-white tracking-tight absolute left-1/2 transform -translate-x-1/2">Account Setting</span>
+                <div class="w-10"></div> <!-- Spacer -->
+            </div>
+
+            <div class="p-6 space-y-8 pb-32">
+                <!-- Login Info -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider ml-1">Login Info</h3>
+                    <div>
+                        <label class="text-xs text-neutral-400 mb-1.5 block ml-1">Email Address</label>
+                        <div class="relative">
+                            <input type="email" value="elena.morris@example.com" readonly="" class="w-full input-dark rounded-xl px-4 py-3 text-sm text-neutral-400 bg-neutral-800/50 cursor-not-allowed">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:lock" data-width="14" class="iconify absolute right-4 top-3.5 text-neutral-500 iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></g></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-xs text-neutral-400 mb-1.5 block ml-1">Password</label>
+                        <button class="w-full input-dark hover:bg-white/5 rounded-xl px-4 py-3 text-sm text-white text-left flex justify-between items-center transition-colors">
+                            <span>••••••••••••</span>
+                            <span class="text-xs text-neutral-400">Change</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider ml-1">Notifications</h3>
+                    
+                    <div class="flex items-center justify-between p-1">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-white">Push Notifications</span>
+                            <span class="text-xs text-neutral-500">Receive alerts on your device</span>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-1">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-white">Email Updates</span>
+                            <span class="text-xs text-neutral-500">Weekly digest and activity</span>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-1">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-white">Marketing</span>
+                            <span class="text-xs text-neutral-500">News about new features</span>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div class="pt-8 border-t border-white/5">
+                    <button class="text-red-400 text-xs font-medium hover:text-red-300 transition-colors flex items-center gap-2 px-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:trash" data-width="14" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                        Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- SCREEN 5: TERMS OF USE -->
+        <!-- ============================================== -->
+        <div id="terms" class="screen-overlay overflow-y-auto hide-scrollbar">
+            <!-- Consistent Header: Sub Page -->
+            <div class="h-14 px-2 flex items-center justify-between sticky top-0 bg-neutral-900/90 backdrop-blur-md z-30 border-b border-white/5 shrink-0">
+                <button onclick="closeScreen('terms')" class="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:chevron-left" data-width="24" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-6-6l6-6"></path></svg>
+                </button>
+                <span class="text-[15px] font-medium text-white tracking-tight absolute left-1/2 transform -translate-x-1/2">Terms of Use</span>
+                <div class="w-10"></div> <!-- Spacer -->
+            </div>
+
+            <div class="p-6 text-neutral-300 text-sm leading-relaxed space-y-6 pb-20">
+                <div>
+                    <h3 class="text-white font-medium mb-2">1. Introduction</h3>
+                    <p class="text-neutral-400 text-xs leading-6">Welcome to bside.art. By accessing our platform, you agree to these Terms of Use. Please read them carefully. This agreement acts as a legal contract between you and bside.art regarding your use of the services.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">2. User Conduct</h3>
+                    <p class="text-neutral-400 text-xs leading-6">You agree not to misuse the services. You are solely responsible for all content, including artworks and comments, that you upload, post, email, or otherwise transmit via the service.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">3. Intellectual Property</h3>
+                    <p class="text-neutral-400 text-xs leading-6">All content included on this site, such as text, graphics, logos, and images, is the property of bside.art or its content suppliers and protected by international copyright laws.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-medium mb-2">4. Termination</h3>
+                    <p class="text-neutral-400 text-xs leading-6">We may terminate or suspend access to our service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+                </div>
+                <div class="text-xs text-neutral-600 pt-4">
+                    Last updated: October 24, 2023
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- SCREEN 6: SAFETY & PRIVACY -->
+        <!-- ============================================== -->
+        <div id="safety" class="screen-overlay overflow-y-auto hide-scrollbar">
+            <!-- Consistent Header: Sub Page -->
+            <div class="h-14 px-2 flex items-center justify-between sticky top-0 bg-neutral-900/90 backdrop-blur-md z-30 border-b border-white/5 shrink-0">
+                <button onclick="closeScreen('safety')" class="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:chevron-left" data-width="24" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-6-6l6-6"></path></svg>
+                </button>
+                <span class="text-[15px] font-medium text-white tracking-tight absolute left-1/2 transform -translate-x-1/2">Safety &amp; Privacy</span>
+                <div class="w-10"></div> <!-- Spacer -->
+            </div>
+
+            <div class="p-6 space-y-8">
+                <!-- Privacy Controls -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider ml-1">Privacy Controls</h3>
+                    
+                    <div class="flex items-center justify-between p-1">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-white">Private Account</span>
+                            <span class="text-xs text-neutral-500">Only followers can see your collection</span>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-1">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium text-white">Activity Status</span>
+                            <span class="text-xs text-neutral-500">Show when you are active</span>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactions -->
+                <div class="space-y-2">
+                    <h3 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider ml-1 mb-3">Interactions</h3>
+                    
+                    <button class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3.5 flex items-center justify-between hover:bg-white/10 transition-colors">
+                        <span class="text-sm text-neutral-200">Blocked Accounts</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-neutral-500">3 users</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:chevron-right" data-width="14" class="iconify text-neutral-500 iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"></path></svg>
+                        </div>
+                    </button>
+
+                    <button class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3.5 flex items-center justify-between hover:bg-white/10 transition-colors">
+                        <span class="text-sm text-neutral-200">Muted Words</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:chevron-right" data-width="14" class="iconify text-neutral-500 iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Data -->
+                <div class="space-y-2">
+                    <h3 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider ml-1 mb-3">Data</h3>
+                    <button class="w-full text-left px-1 py-2 text-sm text-neutral-300 hover:text-white transition-colors flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:download" data-width="14" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10l5 5l5-5"></path></g></svg>
+                        Download my data
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- SCREEN 7: CONTACT -->
+        <!-- ============================================== -->
+        <div id="contact" class="screen-overlay overflow-y-auto hide-scrollbar">
+            <!-- Consistent Header: Sub Page -->
+            <div class="h-14 px-2 flex items-center justify-between sticky top-0 bg-neutral-900/90 backdrop-blur-md z-30 border-b border-white/5 shrink-0">
+                <button onclick="closeScreen('contact')" class="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24" data-icon="lucide:chevron-left" data-width="24" data-stroke-width="1.5" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-6-6l6-6"></path></svg>
+                </button>
+                <span class="text-[15px] font-medium text-white tracking-tight absolute left-1/2 transform -translate-x-1/2">Contact</span>
+                <div class="w-10"></div> <!-- Spacer -->
+            </div>
+
+            <div class="p-6">
+                <div class="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 mb-8 flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="16" height="16" viewBox="0 0 24 24" data-icon="lucide:info" data-width="16" class="iconify text-blue-400 mt-0.5 shrink-0 iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4m0-4h.01"></path></g></svg>
+                    <p class="text-xs text-blue-200 leading-5">
+                        We usually respond within 24 hours on business days. Check our FAQ for quick answers.
+                    </p>
+                </div>
+
+                <form onsubmit="event.preventDefault(); closeScreen('contact');" class="space-y-6">
+                    <div>
+                        <label class="text-xs font-medium text-neutral-400 mb-2 block ml-1">Inquiry Type</label>
+                        <div class="relative w-full">
+                            <select class="w-full input-dark appearance-none rounded-xl px-4 py-3.5 text-sm text-white bg-transparent focus:ring-1 focus:ring-white/20">
+                                <option class="bg-neutral-900">General Support</option>
+                                <option class="bg-neutral-900">Account Issue</option>
+                                <option class="bg-neutral-900">Report Content</option>
+                                <option class="bg-neutral-900">Partnership</option>
+                            </select>
+                            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="16" height="16" viewBox="0 0 24 24" data-icon="lucide:chevron-down" data-width="16" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-medium text-neutral-400 mb-2 block ml-1">Message</label>
+                        <textarea rows="6" placeholder="How can we help you?" class="w-full input-dark rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-600 focus:ring-1 focus:ring-white/20 resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-white hover:bg-neutral-200 text-black font-medium text-sm py-3.5 rounded-xl transition-colors shadow-lg shadow-white/5 flex items-center justify-center gap-2">
+                            Send Message
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="14" height="14" viewBox="0 0 24 24" data-icon="lucide:send" data-width="14" class="iconify iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"></path></svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation Logic
+        function openScreen(screenId) {
+            const screen = document.getElementById(screenId);
+            if (screen) {
+                screen.classList.add('open');
+            }
+        }
+
+        function closeScreen(screenId) {
+            const screen = document.getElementById(screenId);
+            if (screen) {
+                screen.classList.remove('open');
+            }
+        }
+
+        // Custom Toggle Logic
+        function toggleSwitch(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+
+<script src="router.js?v=3"></script>
+<script>
+    // Set current draft to 3 when this page loads
+    if (typeof Router !== 'undefined') {
+        Router.setDraft(3);
+    }
+</script>
+
+</body></html>

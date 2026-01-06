@@ -1,0 +1,482 @@
+<html lang="en" class="dark"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bside.art - Artist Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-header {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        /* Custom animation classes for interactions */
+        .scale-in {
+            animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="bg-[#050505] h-screen w-full flex items-center justify-center overflow-hidden text-neutral-200 selection:bg-indigo-500/30 selection:text-white">
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-500/[0.03] rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-blue-600/[0.04] rounded-full blur-[100px]"></div>
+    </div>
+
+    <!-- Mobile Container -->
+    <div class="relative w-full h-full max-w-[375px] bg-[#0A0A0A] sm:h-[800px] sm:max-h-[90vh] sm:rounded-[36px] sm:shadow-2xl sm:border sm:border-white/10 overflow-hidden flex flex-col ring-1 ring-white/5">
+
+        <!-- Top Notch Indicator -->
+        <div class="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-black/40 rounded-full z-50 backdrop-blur-sm border border-white/5 pointer-events-none"></div>
+
+        <!-- Notification Toast (Hidden by default) -->
+        <div id="toast" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-black text-xs font-semibold px-4 py-2.5 rounded-full shadow-xl translate-y-20 opacity-0 transition-all duration-300 z-[60] flex items-center gap-2 whitespace-nowrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-3.5 h-3.5 text-green-600"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+            <span id="toast-message">Action successful</span>
+        </div>
+
+        <!-- Header -->
+        <header id="main-header" class="flex-none px-4 pt-10 pb-3 flex items-center justify-between z-30 glass-header sticky top-0 transition-all duration-300">
+            <div class="flex items-center gap-2">
+                <button onclick="Router.navigate('artwork')" class="flex gap-1.5 hover:text-white transition-colors group active:bg-white/5 text-neutral-400 rounded-full pt-1 pr-1 pb-1 pl-1 gap-x-1.5 gap-y-1.5 items-center cursor-pointer" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" class="lucide lucide-chevron-left w-5 h-5 transition-transform group-hover:-translate-x-0.5"><path d="m15 18-6-6 6-6"></path></svg>
+                    <span class="text-[14px] font-medium">Back</span>
+                </button>
+                <button onclick="Router.goToDraftSelector()" class="text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 text-neutral-300 hover:bg-white/10 hover:text-white transition-all active:scale-95 bg-white/5">
+                    Drafts
+                </button>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button id="subscribe-btn" onclick="toggleSubscribe()" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.3)] transition-all active:scale-95 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-3.5 h-3.5 stroke-[3] group-[.subscribed]:hidden"><path d="M20 6 9 17l-5-5"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user-check" class="lucide lucide-user-check w-3.5 h-3.5 stroke-[3] hidden group-[.subscribed]:block"><path d="m16 11 2 2 4-4"></path><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    <span class="text-[12px] font-semibold tracking-wide group-[.subscribed]:hidden">Subscribe</span>
+                    <span class="text-[12px] font-semibold tracking-wide hidden group-[.subscribed]:block">Following</span>
+                </button>
+                
+                <div class="relative">
+                    <button onclick="toggleDropdown('menu-dropdown')" class="w-8 h-8 flex items-center justify-center rounded-full text-neutral-400 hover:text-white hover:bg-white/5 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="more-horizontal" class="lucide lucide-more-horizontal w-5 h-5"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                    </button>
+                    <!-- Menu Dropdown -->
+                    <div id="menu-dropdown" class="hidden absolute right-0 top-full mt-2 w-40 glass-card bg-[#111] rounded-xl shadow-2xl p-1 z-40 origin-top-right transform transition-all">
+                        <button onclick="showToast('Profile shared'); toggleDropdown('menu-dropdown')" class="w-full text-left px-3 py-2 text-xs text-neutral-300 hover:bg-white/5 rounded-lg flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share" class="lucide lucide-share w-3.5 h-3.5"><path d="M12 2v13"></path><path d="m16 6-4-4-4 4"></path><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path></svg> Share Profile
+                        </button>
+                        <button onclick="showToast('Reported'); toggleDropdown('menu-dropdown')" class="w-full text-left px-3 py-2 text-xs text-red-400 hover:bg-red-500/10 rounded-lg flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="flag" class="lucide lucide-flag w-3.5 h-3.5"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"></path></svg> Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <main id="scroll-container" class="flex-1 overflow-y-auto no-scrollbar scroll-smooth">
+            
+            <!-- Artist Info Section -->
+            <section class="px-5 pt-6 pb-6">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex flex-col gap-1">
+                            <h1 class="text-2xl font-semibold text-white tracking-tight">Elena Vosk</h1>
+                            <span class="text-xs text-neutral-500 font-medium">chansong_kim/bside.art</span>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-[10px] font-semibold text-green-400 uppercase tracking-wide animate-pulse">
+                            Live
+                        </span>
+                    </div>
+
+                    <!-- SNS Links Scroll -->
+                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 -mx-5 px-5">
+                        <a href="#" onclick="showToast('Opening Instagram...')" class="flex-none px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-neutral-300 text-xs font-medium hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 active:scale-95">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram w-3.5 h-3.5"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" onclick="showToast('Opening Twitter...')" class="flex-none px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-neutral-300 text-xs font-medium hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 active:scale-95">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" class="lucide lucide-twitter w-3.5 h-3.5"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="#" onclick="showToast('Opening Website...')" class="flex-none px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-neutral-300 text-xs font-medium hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 active:scale-95">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" class="lucide lucide-globe w-3.5 h-3.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                            <span>Website</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comments Preview Section -->
+            <section class="border-t border-white/5 py-6">
+                <div class="px-5 flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2 text-neutral-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-square" class="lucide lucide-message-square w-4 h-4 text-neutral-400"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
+                        <span class="text-sm font-semibold">Comment <span class="text-neutral-500 font-normal">892</span></span>
+                    </div>
+                    <button onclick="showToast('Comment box opened')" class="p-1.5 text-neutral-400 hover:text-white rounded-md hover:bg-white/5 transition-colors active:scale-90">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="square-pen" class="lucide lucide-square-pen w-4 h-4"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Horizontal Comment Cards -->
+                <div class="flex gap-3 overflow-x-auto no-scrollbar px-5 pb-2">
+                    <!-- Card 1 -->
+                    <div onclick="showToast('View comment thread')" class="flex-none w-[260px] glass-card rounded-xl p-3.5 group cursor-pointer hover:border-white/20 hover:bg-white/[0.04] transition-all active:scale-[0.98]">
+                        <div class="flex items-center gap-2 mb-2">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&amp;h=64&amp;fit=crop&amp;crop=faces" class="w-5 h-5 rounded-full object-cover ring-1 ring-white/10" alt="Avatar">
+                            <span class="text-xs font-medium text-white">Sarah Jenkins</span>
+                            <span class="text-[10px] text-neutral-500 ml-auto">12m ago</span>
+                        </div>
+                        <p class="text-[11px] leading-relaxed text-neutral-400 line-clamp-3 group-hover:text-neutral-300 transition-colors">
+                            The way the digital void interacts with the physical OLED constraints is simply mesmerizing. It reminds me of the early glitched works but with...
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div onclick="showToast('View comment thread')" class="flex-none w-[260px] glass-card rounded-xl p-3.5 group cursor-pointer hover:border-white/20 hover:bg-white/[0.04] transition-all active:scale-[0.98]">
+                        <div class="flex items-center gap-2 mb-2">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&amp;h=64&amp;fit=crop&amp;crop=faces" class="w-5 h-5 rounded-full object-cover ring-1 ring-white/10" alt="Avatar">
+                            <span class="text-xs font-medium text-white">Kenji Tanaka</span>
+                            <span class="text-[10px] text-neutral-500 ml-auto">2h ago</span>
+                        </div>
+                        <p class="text-[11px] leading-relaxed text-neutral-400 line-clamp-3 group-hover:text-neutral-300 transition-colors">
+                            Absolutely stunning composition. I love how the lighting shifts depending on the viewing angle. Is this part of the new "Neural" series?
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Artworks & Collection Section -->
+            <section class="px-5 pb-24">
+                
+                <!-- Main Tabs -->
+                <div class="flex items-center gap-2 mb-5">
+                    <button id="tab-artworks" onclick="switchTab('artworks')" class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full shadow-sm hover:opacity-90 transition-all active:scale-95">
+                        Artworks <span id="count-artworks" class="bg-black/10 text-black px-1.5 py-0.5 rounded-full text-[9px] ml-1">4,444</span>
+                    </button>
+                    <button id="tab-collection" onclick="switchTab('collection')" class="bg-transparent border border-white/15 text-neutral-400 text-xs font-medium px-4 py-2 rounded-full hover:text-white hover:border-white/30 transition-all active:scale-95">
+                        Collection <span id="count-collection" class="text-neutral-500 text-[10px] ml-1">123</span>
+                    </button>
+                </div>
+
+                <!-- Content Container -->
+                <div id="content-container">
+                    
+                    <!-- View: Artworks -->
+                    <div id="view-artworks" class="block">
+                        <!-- Filters Row -->
+                        <div class="flex gap-2 mb-6 z-20 relative">
+                            <div class="relative flex-1">
+                                <button onclick="toggleDropdown('artist-filter')" class="w-full flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-neutral-300 hover:bg-white/10 transition-colors active:bg-white/15">
+                                    <span id="artist-label">All Artist</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-3.5 h-3.5 text-neutral-500"><path d="m6 9 6 6 6-6"></path></svg>
+                                </button>
+                                <!-- Artist Dropdown -->
+                                <div id="artist-filter" class="hidden absolute top-full mt-1 w-full glass-card bg-[#111] rounded-lg shadow-xl p-1 z-30 flex flex-col gap-0.5">
+                                    <button onclick="selectFilter('artist-label', 'All Artist', 'artist-filter')" class="text-left text-xs px-2 py-1.5 rounded hover:bg-white/10 text-white">All Artist</button>
+                                    <button onclick="selectFilter('artist-label', 'Elena Vosk', 'artist-filter')" class="text-left text-xs px-2 py-1.5 rounded hover:bg-white/10 text-neutral-400 hover:text-white">Elena Vosk</button>
+                                    <button onclick="selectFilter('artist-label', 'Collabs', 'artist-filter')" class="text-left text-xs px-2 py-1.5 rounded hover:bg-white/10 text-neutral-400 hover:text-white">Collabs</button>
+                                </div>
+                            </div>
+                            
+                            <div class="relative flex-1">
+                                <button onclick="toggleDropdown('exhibition-filter')" class="w-full flex items-center justify-between bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-neutral-300 hover:bg-white/10 transition-colors active:bg-white/15">
+                                    <span id="exhibition-label">All Exhibition</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-3.5 h-3.5 text-neutral-500"><path d="m6 9 6 6 6-6"></path></svg>
+                                </button>
+                                <!-- Exhibition Dropdown -->
+                                <div id="exhibition-filter" class="hidden absolute top-full mt-1 w-full glass-card bg-[#111] rounded-lg shadow-xl p-1 z-30 flex flex-col gap-0.5">
+                                    <button onclick="selectFilter('exhibition-label', 'All Exhibition', 'exhibition-filter')" class="text-left text-xs px-2 py-1.5 rounded hover:bg-white/10 text-white">All Exhibition</button>
+                                    <button onclick="selectFilter('exhibition-label', 'Neon Nights', 'exhibition-filter')" class="text-left text-xs px-2 py-1.5 rounded hover:bg-white/10 text-neutral-400 hover:text-white">Neon Nights</button>
+                                    <button onclick="selectFilter('exhibition-label', 'Voidwalker', 'exhibition-filter')" class="text-left text-xs px-2 py-1.5 rounded hover:bg-white/10 text-neutral-400 hover:text-white">Voidwalker</button>
+                                </div>
+                            </div>
+                            
+                            <button onclick="showToast('Search active')" class="flex-none w-9 h-9 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg text-neutral-400 hover:text-white hover:bg-white/10 transition-colors active:scale-95">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search w-4 h-4"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+                            </button>
+                        </div>
+
+                        <!-- Sort Indicator -->
+                        <div class="flex items-center gap-1.5 text-xs text-neutral-500 mb-4 px-1 cursor-pointer hover:text-white transition-colors" onclick="showToast('Sorted by Recent')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-down" class="lucide lucide-arrow-up-down w-3 h-3"><path d="m21 16-4 4-4-4"></path><path d="M17 20V4"></path><path d="m3 8 4-4 4 4"></path><path d="M7 4v16"></path></svg>
+                            <span>Recent work</span>
+                        </div>
+
+                        <!-- Masonry Grid -->
+                        <div class="columns-2 gap-3 space-y-3">
+                            <!-- Item 1 -->
+                            <div onclick="showToast('Viewing The Neural Void')" class="break-inside-avoid relative group cursor-pointer active:scale-[0.98] transition-transform">
+                                <div class="rounded-xl overflow-hidden bg-neutral-900 border border-white/10 relative">
+                                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" alt="Artwork">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                                <div class="mt-2 px-1">
+                                    <h3 class="text-[11px] font-semibold text-neutral-200 leading-tight">The Neural Void</h3>
+                                    <p class="text-[10px] text-neutral-500 mt-0.5">2025 • Digital</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div onclick="showToast('Viewing Chrome Silence')" class="break-inside-avoid relative group cursor-pointer active:scale-[0.98] transition-transform">
+                                <div class="rounded-xl overflow-hidden bg-neutral-900 border border-white/10 relative">
+                                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" alt="Artwork">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                                <div class="mt-2 px-1">
+                                    <h3 class="text-[11px] font-semibold text-neutral-200 leading-tight">Chrome Silence</h3>
+                                    <p class="text-[10px] text-neutral-500 mt-0.5">2024 • 3D Render</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div onclick="showToast('Viewing Fragment #88')" class="break-inside-avoid relative group cursor-pointer active:scale-[0.98] transition-transform">
+                                <div class="rounded-xl overflow-hidden bg-neutral-900 border border-white/10 relative">
+                                    <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" alt="Artwork">
+                                </div>
+                                <div class="mt-2 px-1">
+                                    <h3 class="text-[11px] font-semibold text-neutral-200 leading-tight">Fragment #88</h3>
+                                    <p class="text-[10px] text-neutral-500 mt-0.5">2025 • Mixed Media</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div onclick="showToast('Viewing Neon Dreams')" class="break-inside-avoid relative group cursor-pointer active:scale-[0.98] transition-transform">
+                                <div class="rounded-xl overflow-hidden bg-neutral-900 border border-white/10 relative">
+                                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" alt="Artwork">
+                                </div>
+                                <div class="mt-2 px-1">
+                                    <h3 class="text-[11px] font-semibold text-neutral-200 leading-tight">Neon Dreams</h3>
+                                    <p class="text-[10px] text-neutral-500 mt-0.5">2023 • Photography</p>
+                                </div>
+                            </div>
+                             <!-- Item 5 -->
+                             <div onclick="showToast('Viewing Flux State')" class="break-inside-avoid relative group cursor-pointer active:scale-[0.98] transition-transform">
+                                <div class="rounded-xl overflow-hidden bg-neutral-900 border border-white/10 relative">
+                                    <img src="https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" alt="Artwork">
+                                </div>
+                                <div class="mt-2 px-1">
+                                    <h3 class="text-[11px] font-semibold text-neutral-200 leading-tight">Flux State</h3>
+                                    <p class="text-[10px] text-neutral-500 mt-0.5">2025 • Generative</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View: Collection (Hidden by default) -->
+                    <div id="view-collection" class="hidden scale-in">
+                        <div class="space-y-3">
+                             <!-- Collection Item 1 -->
+                             <div onclick="showToast('View Collection Item')" class="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 active:bg-white/10 transition-colors cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=100&amp;h=100&amp;fit=crop" class="w-12 h-12 rounded-lg object-cover">
+                                <div>
+                                    <h3 class="text-xs font-semibold text-white">Cyber Renaissance</h3>
+                                    <p class="text-[10px] text-neutral-500">Collected from @zen_master</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-4 h-4 text-neutral-600"><path d="m9 18 6-6-6-6"></path></svg>
+                                </div>
+                             </div>
+                             <!-- Collection Item 2 -->
+                             <div onclick="showToast('View Collection Item')" class="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 active:bg-white/10 transition-colors cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1614850523060-8da1d56ae167?w=100&amp;h=100&amp;fit=crop" class="w-12 h-12 rounded-lg object-cover">
+                                <div>
+                                    <h3 class="text-xs font-semibold text-white">Abstract Flow</h3>
+                                    <p class="text-[10px] text-neutral-500">Collected from @nova_art</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-4 h-4 text-neutral-600"><path d="m9 18 6-6-6-6"></path></svg>
+                                </div>
+                             </div>
+                             <!-- Collection Item 3 -->
+                             <div onclick="showToast('View Collection Item')" class="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 active:bg-white/10 transition-colors cursor-pointer">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&amp;h=100&amp;fit=crop" class="w-12 h-12 rounded-lg object-cover grayscale opacity-50">
+                                <div>
+                                    <h3 class="text-xs font-semibold text-white">Hidden Layer</h3>
+                                    <p class="text-[10px] text-neutral-500">Hidden collection</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="lock" class="lucide lucide-lock w-3.5 h-3.5 text-neutral-600"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <button onclick="showToast('Loading more...')" class="text-[10px] text-neutral-500 font-medium hover:text-white transition-colors">Load more collections</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Blur Overlay for nicer scrolling exit -->
+        <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none z-20"></div>
+
+    </div>
+
+    <!-- Initialize Icons & Logic -->
+    <script>
+        lucide.createIcons();
+
+        // Toast System
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toast-message');
+            msg.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Dropdown Logic
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const isHidden = dropdown.classList.contains('hidden');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('[id$="-dropdown"], [id$="-filter"]').forEach(el => {
+                if (el.id !== id) el.classList.add('hidden');
+            });
+
+            if (isHidden) {
+                dropdown.classList.remove('hidden');
+            } else {
+                dropdown.classList.add('hidden');
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('button')) {
+                document.querySelectorAll('[id$="-dropdown"], [id$="-filter"]').forEach(el => {
+                    el.classList.add('hidden');
+                });
+            }
+        });
+
+        // Filter Selection
+        function selectFilter(labelId, text, dropdownId) {
+            document.getElementById(labelId).textContent = text;
+            // Slightly delay closing to allow visual feedback
+            setTimeout(() => {
+                document.getElementById(dropdownId).classList.add('hidden');
+                showToast(`Filter: ${text}`);
+            }, 100);
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            const artworksBtn = document.getElementById('tab-artworks');
+            const collectionBtn = document.getElementById('tab-collection');
+            const artworksView = document.getElementById('view-artworks');
+            const collectionView = document.getElementById('view-collection');
+            const artworksCount = document.getElementById('count-artworks');
+            const collectionCount = document.getElementById('count-collection');
+
+            if (tabName === 'artworks') {
+                artworksView.classList.remove('hidden');
+                collectionView.classList.add('hidden');
+                
+                // Style Active
+                artworksBtn.className = "bg-white text-black text-xs font-bold px-4 py-2 rounded-full shadow-sm hover:opacity-90 transition-all active:scale-95";
+                artworksCount.className = "bg-black/10 text-black px-1.5 py-0.5 rounded-full text-[9px] ml-1";
+                
+                // Style Inactive
+                collectionBtn.className = "bg-transparent border border-white/15 text-neutral-400 text-xs font-medium px-4 py-2 rounded-full hover:text-white hover:border-white/30 transition-all active:scale-95";
+                collectionCount.className = "text-neutral-500 text-[10px] ml-1";
+            } else {
+                artworksView.classList.add('hidden');
+                collectionView.classList.remove('hidden');
+
+                // Style Active
+                collectionBtn.className = "bg-white text-black text-xs font-bold px-4 py-2 rounded-full shadow-sm hover:opacity-90 transition-all active:scale-95";
+                collectionCount.className = "bg-black/10 text-black px-1.5 py-0.5 rounded-full text-[9px] ml-1";
+
+                // Style Inactive
+                artworksBtn.className = "bg-transparent border border-white/15 text-neutral-400 text-xs font-medium px-4 py-2 rounded-full hover:text-white hover:border-white/30 transition-all active:scale-95";
+                artworksCount.className = "text-neutral-500 text-[10px] ml-1";
+            }
+        }
+
+        // Subscribe Toggle
+        function toggleSubscribe() {
+            const btn = document.getElementById('subscribe-btn');
+            btn.classList.toggle('subscribed');
+            btn.classList.toggle('bg-blue-600');
+            btn.classList.toggle('hover:bg-blue-500');
+            btn.classList.toggle('shadow-[0_0_15px_rgba(37,99,235,0.3)]');
+            
+            // Toggle to "following" styles
+            btn.classList.toggle('bg-neutral-800');
+            btn.classList.toggle('hover:bg-neutral-700');
+            btn.classList.toggle('text-neutral-200');
+            
+            if(btn.classList.contains('subscribed')) {
+                showToast("Subscribed to Elena Vosk");
+            } else {
+                showToast("Unsubscribed");
+            }
+        }
+
+        // Scroll Logic for Header transparency
+        const scrollContainer = document.getElementById('scroll-container');
+        const header = document.getElementById('main-header');
+
+        scrollContainer.addEventListener('scroll', () => {
+            if (scrollContainer.scrollTop > 20) {
+                header.style.background = "rgba(5, 5, 5, 0.95)";
+                header.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
+            } else {
+                header.style.background = "rgba(10, 10, 10, 0.85)";
+                header.style.borderBottom = "1px solid rgba(255, 255, 255, 0.05)";
+            }
+        });
+
+    </script>
+
+<script src="router.js?v=3"></script>
+<script>
+    // Set current draft to 3 when this page loads
+    if (typeof Router !== 'undefined') {
+        Router.setDraft(3);
+    }
+    lucide.createIcons();
+</script>
+
+</body></html>

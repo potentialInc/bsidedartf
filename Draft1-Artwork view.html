@@ -27,9 +27,14 @@ body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparen
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x w-5 h-5 group-hover:rotate-90 transition-transform"><path d="M18 6 6 18"></path><path d="m6 6 18 18"></path></svg>
             <span class="text-sm font-medium tracking-tight">close</span>
         </button>
-        <button class="text-zinc-400 hover:text-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal w-6 h-6 stroke-[1.5]"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-        </button>
+        <div class="flex items-center gap-2">
+            <button onclick="Router.goToDraftSelector()" class="text-xs font-medium px-3 py-1.5 rounded-full border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-all active:scale-95 bg-zinc-900/50">
+                Drafts
+            </button>
+            <button class="text-zinc-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal w-6 h-6 stroke-[1.5]"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            </button>
+        </div>
     </header>
 
     <!-- Scrollable Content Container -->
