@@ -23,7 +23,7 @@ body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparen
 
     <!-- Header -->
     <header class="flex items-center justify-between px-6 pt-14 pb-4 z-10 bg-black sticky top-0 shrink-0">
-        <button class="flex hover:text-white transition-colors group text-zinc-400 gap-x-1.5 gap-y-1.5 items-center" onclick="window.location.href='/home';window.location.href='/home'" role="button">
+        <button class="flex hover:text-white transition-colors group text-zinc-400 gap-x-1.5 gap-y-1.5 items-center" onclick="Router.navigate('home')" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x w-5 h-5 group-hover:rotate-90 transition-transform"><path d="M18 6 6 18"></path><path d="m6 6 18 18"></path></svg>
             <span class="text-sm font-medium tracking-tight">close</span>
         </button>
@@ -179,7 +179,7 @@ body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparen
 
     <!-- Floating Primary Button -->
     <div class="absolute bottom-6 left-6 right-6 z-30">
-        <button class="hover:bg-zinc-800 shadow-zinc-900/10 flex active:scale-95 transition-all group font-semibold text-white bg-zinc-900 w-full h-14 border-zinc-800/50 border rounded-2xl shadow-xl gap-x-2.5 gap-y-2.5 items-center justify-center" onclick="window.location.href='/artist-page'" role="button">
+        <button class="hover:bg-zinc-800 shadow-zinc-900/10 flex active:scale-95 transition-all group font-semibold text-white bg-zinc-900 w-full h-14 border-zinc-800/50 border rounded-2xl shadow-xl gap-x-2.5 gap-y-2.5 items-center justify-center" onclick="Router.navigate('artist')" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
             <span class="text-sm">Support your Artist</span>
         </button>
@@ -187,6 +187,7 @@ body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparen
     
 </div>
 
+<script src="router.js"></script>
 <script>
     lucide.createIcons();
 </script>

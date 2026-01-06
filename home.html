@@ -208,7 +208,7 @@ addUtilities({
                 </div>
 
                 <!-- Center Active Card -->
-                <div class="aspect-[3/4] flex flex-col group overflow-hidden bg-[#1a1a1a] w-48 z-10 border-white/10 border rounded-2xl pt-3 pr-3 pb-3 pl-3 relative shadow-2xl" onclick="window.location.href='/artwork-view-2'" role="button">
+                <div class="aspect-[3/4] flex flex-col group overflow-hidden bg-[#1a1a1a] w-48 z-10 border-white/10 border rounded-2xl pt-3 pr-3 pb-3 pl-3 relative shadow-2xl" onclick="Router.navigate('artwork')" role="button">
                     <!-- Artwork Visual Placeholder -->
                     <div class="flex-1 bg-zinc-900 rounded-xl overflow-hidden relative border border-white/5">
                         <div class="bg-center bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/e7279d8d-f598-4fd6-9343-5f6827402adb_800w.webp)] bg-cover absolute top-0 right-0 bottom-0 left-0"></div>
@@ -282,7 +282,7 @@ addUtilities({
             </button>
 
             <!-- Settings (New) -->
-            <button class="flex hover:bg-white/5 hover:text-white transition-all active:scale-95 group text-zinc-400 w-12 h-12 rounded-full items-center justify-center">
+            <button class="flex hover:bg-white/5 hover:text-white transition-all active:scale-95 group text-zinc-400 w-12 h-12 rounded-full items-center justify-center" onclick="Router.navigate('settings')" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings stroke-[1.5] group-hover:scale-110 transition-transform w-[22px] h-[22px]" data-icon-replaced="true" style="color: rgb(255, 255, 255); width: 22px; height: 22px"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" class=""></path><circle cx="12" cy="12" r="3" class=""></circle></svg>
             </button>
 
@@ -291,6 +291,7 @@ addUtilities({
     
 </div>
 
+<script src="router.js"></script>
 <script class="">
     lucide.createIcons();
 </script>

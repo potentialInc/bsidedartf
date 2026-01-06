@@ -23,7 +23,7 @@ body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparen
 
     <!-- Header -->
     <header class="flex z-20 sticky shrink-0 bg-black/80 border-white/5 border-b pt-14 pr-6 pb-4 pl-6 top-0 backdrop-blur-xl items-center justify-between">
-        <button class="flex hover:text-white hover:bg-zinc-900 transition-all group text-zinc-400 w-10 h-10 rounded-full items-center justify-center" onclick="window.history.back();;window.location.href='/artwork-view-2'" role="button">
+        <button class="flex hover:text-white hover:bg-zinc-900 transition-all group text-zinc-400 w-10 h-10 rounded-full items-center justify-center" onclick="Router.navigate('artwork')" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left w-6 h-6 group-hover:-translate-x-0.5 transition-transform"><path d="m12 19-7-7 7-7" class=""></path><path d="M19 12H5" class=""></path></svg>
         </button>
         
@@ -294,6 +294,7 @@ body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparen
     
 </div>
 
+<script src="router.js"></script>
 <script>
     lucide.createIcons();
 
