@@ -1,0 +1,14 @@
+{
+  "name": "bsideart",
+  "version": "1.0.0",
+  "description": "b side art website",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx http-server . -p 3000 -o -c-1",
+    "serve": "npx http-server . -p 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+

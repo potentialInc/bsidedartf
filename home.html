@@ -1,0 +1,298 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>b side - Collection</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>  
+<script>
+// Configure Tailwind to include our custom 3D transform utilities
+tailwind.config = {
+theme: {
+extend: {
+// Add any custom theme extensions here if needed
+}
+},
+plugins: [
+function({ addUtilities }) {
+const rotateXUtilities = {};
+const rotateYUtilities = {};
+const rotateZUtilities = {};
+const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
+// Generate rotate-x utilities
+rotateValues.forEach((value) => {
+rotateXUtilities[`.rotate-x-${value}`] = {
+'--tw-rotate-x': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateXUtilities[`.-rotate-x-${value}`] = {
+'--tw-rotate-x': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Generate rotate-y utilities
+rotateValues.forEach((value) => {
+rotateYUtilities[`.rotate-y-${value}`] = {
+'--tw-rotate-y': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateYUtilities[`.-rotate-y-${value}`] = {
+'--tw-rotate-y': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Generate rotate-z utilities
+rotateValues.forEach((value) => {
+rotateZUtilities[`.rotate-z-${value}`] = {
+'--tw-rotate-z': `${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+if (value !== 0) {
+rotateZUtilities[`.-rotate-z-${value}`] = {
+'--tw-rotate-z': `-${value}deg`,
+transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+};
+}
+});
+// Perspective utilities
+const perspectiveUtilities = {
+".perspective-none": { perspective: "none" },
+".perspective-dramatic": { perspective: "100px" },
+".perspective-near": { perspective: "300px" },
+".perspective-normal": { perspective: "500px" },
+".perspective-midrange": { perspective: "800px" },
+".perspective-distant": { perspective: "1200px" },
+};
+// Transform style utilities
+const transformStyleUtilities = {
+".transform-style-preserve-3d": { "transform-style": "preserve-3d" },
+".transform-style-flat": { "transform-style": "flat" },
+};
+addUtilities({
+...rotateXUtilities,
+...rotateYUtilities,
+...rotateZUtilities,
+...perspectiveUtilities,
+...transformStyleUtilities,
+});
+}
+]
+};
+</script><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="antialiased flex justify-center items-center min-h-screen selection:bg-white selection:text-black text-zinc-100 bg-zinc-950">
+
+<!-- Phone Frame -->
+<div class="w-full max-w-[400px] bg-black relative flex flex-col h-[100dvh] max-h-[850px] overflow-hidden shadow-2xl sm:rounded-[3rem] ring-8 ring-zinc-800/50 select-none cursor-default border border-zinc-800">
+    
+    <!-- Top Status Bar Area -->
+    <div class="absolute top-0 w-full h-12 z-20 flex justify-center items-end pb-2 opacity-0">
+        <div class="w-16 h-1 bg-zinc-800 rounded-full"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 pt-14 pb-4 z-10 bg-black/80 backdrop-blur-md sticky top-0">
+        <div class="text-xl tracking-tighter text-white">
+            <span class="font-medium">b</span><span class="font-light text-zinc-400">side</span>
+        </div>
+        <div class="flex items-center gap-1 -mr-2">
+            <!-- Settings Icon (New) -->
+            
+            <!-- Notification Icon -->
+            <button class="relative hover:text-white transition-colors text-zinc-400 pt-2 pr-2 pb-2 pl-2">
+    <div class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border border-black z-10"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bell" class="lucide lucide-bell w-6 h-6 stroke-[1.5]"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col items-center justify-center px-6 relative w-full overflow-hidden pb-10">
+        
+        <!-- Ambient Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-zinc-800/20 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <!-- Stacked Cards Effect (Background Layers) -->
+        <div class="absolute top-[8%] w-[85%] h-[60%] bg-zinc-900 border border-white/5 rounded-[2rem] transform -translate-y-6 scale-[0.95] z-0 opacity-50"></div>
+        <div class="transform -translate-y-3 bg-[#1c1c1c] opacity-100 w-[90%] h-[60%] z-0 border-white/5 border rounded-[2rem] absolute top-[10%] scale-[0.98]"></div>
+
+        <!-- Main Collection Card (Increased Height) -->
+        <div class="flex flex-col overflow-hidden bg-[#141414] w-full h-[76%] z-10 border-white/10 border rounded-[2rem] pt-6 pr-6 pb-6 pl-6 relative shadow-2xl">
+            
+            <!-- Card Header -->
+            <div class="flex justify-between items-start mb-6">
+                <h1 class="text-2xl font-normal tracking-tight leading-[1.15] text-zinc-50 max-w-[85%]">
+                    My Favorite Artworks  <span class="text-zinc-500">in Frieze Seoul 2025</span>
+                </h1>
+                <button class="text-zinc-600 hover:text-white transition-colors mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="more-horizontal" class="lucide lucide-more-horizontal w-6 h-6 stroke-[1.5]"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                </button>
+            </div>
+
+            <!-- Carousel Area -->
+            <div class="flex-1 flex mb-4 relative perspective-[1000px] items-center justify-center">
+                
+                <!-- Left Peeking Card -->
+                <div class="absolute left-[-50px] top-1/2 -translate-y-1/2 w-32 h-24 bg-zinc-900 border border-white/5 rounded-xl rotate-[-6deg] opacity-40 flex items-center justify-center p-2 z-0 scale-90 grayscale">
+                    <div class="w-full h-full bg-zinc-800 rounded-lg overflow-hidden relative">
+                         <div class="bg-center bg-[url(https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&amp;q=80)] bg-cover absolute top-0 right-0 bottom-0 left-0"></div>
+                    </div>
+                </div>
+
+                <!-- Right Peeking Card -->
+                <div class="absolute right-[-40px] top-1/2 -translate-y-1/2 w-24 h-32 bg-zinc-900 border border-white/5 rounded-xl rotate-[4deg] opacity-40 flex items-center justify-center p-2 z-0 scale-90 grayscale">
+                    <div class="w-full h-full bg-zinc-800 rounded-lg overflow-hidden relative">
+                        <div class="bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/b3ae15e7-3ed1-4ca0-a1ee-341f034b1613_320w.webp)] bg-cover bg-center absolute top-0 right-0 bottom-0 left-0"></div>
+                    </div>
+                </div>
+
+                <!-- Center Active Card -->
+                <div class="aspect-[3/4] flex flex-col group overflow-hidden bg-[#1a1a1a] w-48 z-10 border-white/10 border rounded-2xl pt-3 pr-3 pb-3 pl-3 relative shadow-2xl" onclick="window.location.href='/artwork-view-2'" role="button">
+                    <!-- Artwork Visual Placeholder -->
+                    <div class="flex-1 bg-zinc-900 rounded-xl overflow-hidden relative border border-white/5">
+                        <div class="bg-center bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/e7279d8d-f598-4fd6-9343-5f6827402adb_800w.webp)] bg-cover absolute top-0 right-0 bottom-0 left-0"></div>
+                        <!-- Abstract Art Shapes -->
+                        <div class="absolute top-4 right-4 w-12 h-12 rounded-full border border-white/10 opacity-50"></div>
+                        <div class="bg-center bg-white/5 w-20 h-20 bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/649a17f7-ce90-412e-bc8c-6227953b3ba4_320w.webp)] bg-cover rounded-full absolute bottom-8 left-[-10px] blur-xl"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-zinc-700">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="aperture" class="lucide lucide-aperture w-8 h-8 stroke-[1] opacity-50"><circle cx="12" cy="12" r="10"></circle><path d="m14.31 8 5.74 9.94"></path><path d="M9.69 8h11.48"></path><path d="m7.38 12 5.74-9.94"></path><path d="M9.69 16 3.95 6.06"></path><path d="M14.31 16H2.83"></path><path d="m16.62 12-5.74 9.94"></path></svg>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 flex justify-between items-center px-1">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-medium">Lot 42</span>
+                            <span class="text-xs font-medium text-zinc-200">Abstract No. 5</span>
+                        </div>
+                        <div class="w-6 h-6 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-3 h-3 text-zinc-400"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Controls -->
+            <div class="flex flex-col gap-4">
+                <!-- Counter & Indicators -->
+                <div class="flex justify-between items-center">
+                    <div class="flex gap-1">
+                        <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                        <div class="w-1.5 h-1.5 rounded-full bg-zinc-800"></div>
+                        <div class="w-1.5 h-1.5 rounded-full bg-zinc-800"></div>
+                    </div>
+                    <div class="px-3 py-1 rounded-full border border-white/10 text-[10px] font-medium text-zinc-400 bg-white/5 backdrop-blur-sm">
+                        1 <span class="text-zinc-600">/</span> 235
+                    </div>
+                </div>
+
+                <!-- Share Button (With Icon) -->
+                <button class="hover:bg-zinc-200 active:scale-[0.99] transition-all flex gap-2 text-sm font-medium text-black tracking-tight bg-white w-full rounded-xl pt-3.5 pb-3.5 shadow-[0_0_20px_rgba(255,255,255,0.1)] gap-x-2 gap-y-2 items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="share-2" class="lucide lucide-share-2 w-4 h-4 stroke-[1.5]"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+    Share Collection
+</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation (Refined Modern Style) -->
+    <nav class="absolute bottom-9 left-0 w-full flex justify-center z-50 pointer-events-none">
+        <div class="flex shadow-black/80 bg-[#18181b] pointer-events-auto border-white/10 border rounded-full pt-1.5 pr-2.5 pb-1.5 pl-2.5 shadow-2xl backdrop-blur-2xl gap-x-1.5 gap-y-1.5 items-center">
+             
+            <!-- Home (New) -->
+            <button class="flex hover:bg-white/5 hover:text-white transition-all active:scale-95 group text-black bg-neutral-100 w-12 h-12 border-neutral-400 border rounded-full items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home stroke-[1.5] group-hover:scale-110 transition-transform w-[22px] h-[22px]" data-icon-replaced="true" style="width: 22px; height: 22px; color: rgb(0, 0, 0)"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" class=""></path><polyline points="9 22 9 12 15 12 15 22" class=""></polyline></svg>
+</button>
+
+            <!-- Collection (Existing) -->
+            <button class="w-12 h-12 rounded-full flex items-center justify-center text-zinc-400 hover:bg-white/5 hover:text-white transition-all active:scale-95 group">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="swatch-book" class="lucide lucide-swatch-book stroke-[1.5] group-hover:scale-110 transition-transform" data-icon-set="lucide" data-icon-replaced="true" style="color: rgb(255, 255, 255);"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z"></path><path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7"></path><path d="M 7 17h.01"></path><path d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8"></path></svg>
+            </button>
+
+            <!-- Camera (Center, Half-Floating) -->
+            <button class="flex -translate-y-6 shadow-white/10 transition-all active:scale-95 hover:bg-zinc-200 group text-white bg-orange-500 w-14 h-14 z-10 rounded-full ring-[#18181b] ring-4 relative shadow-lg items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="scan-line" class="lucide lucide-scan-line stroke-[2] group-hover:scale-110 transition-transform w-[24px] h-[24px]" data-icon-replaced="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 12h10"></path></svg>
+</button>
+            
+            <!-- Search (Existing) -->
+            <button class="flex hover:bg-white/5 hover:text-white transition-all active:scale-95 group text-zinc-400 w-12 h-12 rounded-full items-center justify-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search w-5 h-5 stroke-[1.5] group-hover:scale-110 transition-transform"><path d="m21 21-4.34-4.34" class=""></path><circle cx="11" cy="11" r="8"></circle></svg>
+            </button>
+
+            <!-- Settings (New) -->
+            <button class="flex hover:bg-white/5 hover:text-white transition-all active:scale-95 group text-zinc-400 w-12 h-12 rounded-full items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings stroke-[1.5] group-hover:scale-110 transition-transform w-[22px] h-[22px]" data-icon-replaced="true" style="color: rgb(255, 255, 255); width: 22px; height: 22px"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" class=""></path><circle cx="12" cy="12" r="3" class=""></circle></svg>
+            </button>
+
+        </div>
+    </nav>
+    
+</div>
+
+<script class="">
+    lucide.createIcons();
+</script>
+
+</body></html>

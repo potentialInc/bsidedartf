@@ -1,0 +1,194 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>b side - Artwork View</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>  
+
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="antialiased flex justify-center items-center min-h-screen selection:bg-yellow-200 selection:text-black text-zinc-100 bg-zinc-950">
+
+<!-- Phone Frame -->
+<div class="w-full max-w-[400px] bg-black relative flex flex-col h-[100dvh] max-h-[850px] overflow-hidden shadow-2xl sm:rounded-[3rem] ring-8 ring-zinc-800/50 select-none cursor-default border border-zinc-800">
+    
+    <!-- Top Status Bar Area -->
+    <div class="absolute top-0 w-full h-12 z-20 flex justify-center items-end pb-2 pointer-events-none">
+        <div class="w-16 h-1 bg-zinc-800 rounded-full"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 pt-14 pb-4 z-10 bg-black sticky top-0 shrink-0">
+        <button class="flex hover:text-white transition-colors group text-zinc-400 gap-x-1.5 gap-y-1.5 items-center" onclick="window.location.href='/home';window.location.href='/home'" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x w-5 h-5 group-hover:rotate-90 transition-transform"><path d="M18 6 6 18"></path><path d="m6 6 18 18"></path></svg>
+            <span class="text-sm font-medium tracking-tight">close</span>
+        </button>
+        <button class="text-zinc-400 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal w-6 h-6 stroke-[1.5]"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+        </button>
+    </header>
+
+    <!-- Scrollable Content Container -->
+    <div class="flex-1 flex flex-col overflow-y-auto hide-scrollbar z-0 bg-black relative">
+        
+        <!-- Top Section: Artwork & Details Stacked -->
+        <div class="flex flex-col shrink-0 pt-0 pr-6 pb-5 pl-6 gap-x-6 gap-y-3">
+            
+            <!-- Artwork Image -->
+            <div class="flex bg-center w-full h-48 bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/e7279d8d-f598-4fd6-9343-5f6827402adb_800w.webp)] bg-cover mt-2 mb-2 relative items-center justify-center rounded-[20px] shadow-lg shadow-black/50 border border-white/5"></div>
+
+            <!-- Data Fields Grid -->
+            <div class="grid grid-cols-2 gap-2.5">
+                <!-- Artist -->
+                <div class="col-span-2 flex flex-col -multi bg-[#1A1A1A] border-zinc-800 border rounded-lg pt-2.5 pr-4 pb-2.5 pl-4 justify-center">
+                    <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold mb-0.5">Artist</span>
+                    <span class="text-sm font-medium text-zinc-100 truncate">Lee Ufan</span>
+                </div>
+                
+                <!-- Name -->
+                <div class="flex flex-col -multi bg-[#1A1A1A] border-zinc-800 border rounded-lg pt-2.5 pr-4 pb-2.5 pl-4 justify-center">
+                    <span class="text-[10px] uppercase font-semibold text-zinc-500 tracking-wider mb-0.5">Artwork</span>
+                    <span class="text-xs font-medium text-zinc-100 truncate">Dialogue</span>
+                </div>
+
+                <!-- Year -->
+                <div class="flex flex-col bg-[#1A1A1A] border-zinc-800 border rounded-lg pt-2.5 pr-4 pb-2.5 pl-4 justify-center">
+                    <span class="text-[10px] uppercase font-semibold text-zinc-500 tracking-wider mb-0.5">Year</span>
+                    <span class="text-xs font-medium text-zinc-100">2024</span>
+                </div>
+
+                <!-- Material -->
+                <div class="flex flex-col -multi bg-[#1A1A1A] border-zinc-800 border rounded-lg pt-2.5 pr-4 pb-2.5 pl-4 justify-center">
+                    <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold mb-0.5">Material</span>
+                    <span class="text-xs font-medium text-zinc-100 truncate">Oil on canvas</span>
+                </div>
+
+                <!-- Size -->
+                <div class="flex flex-col -multi bg-[#1A1A1A] border-zinc-800 border rounded-lg pt-2.5 pr-4 pb-2.5 pl-4 justify-center">
+                    <span class="text-[10px] uppercase font-semibold text-zinc-500 tracking-wider mb-0.5">Size (cm)</span>
+                    <span class="text-xs font-medium text-zinc-100">130x162</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provenance Section -->
+        <div class="bg-[#FAFAFA] w-full h-fit rounded-t-[2rem] mt-2 mb-2 pt-4 pr-4 pb-8 pl-4 relative">
+            
+            <h2 class="text-lg font-semibold text-zinc-900 tracking-tight mb-6">Provenance</h2>
+
+            <!-- Timeline Container -->
+            <div class="pl-2.5 relative">
+                <!-- Vertical Line (Stops before the end to avoid bleeding) -->
+                <div class="bg-gradient-to-b from-zinc-200 via-zinc-200 to-zinc-200/0 w-[2px] absolute top-2 bottom-6 left-[7px]"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="group mb-6 pl-8 relative">
+                    <div class="absolute left-0 top-[22px] w-4 h-4 bg-white border-[3px] border-zinc-200 rounded-full z-10 group-hover:border-zinc-300 transition-colors"></div>
+                    <div class="group-hover:shadow-md transition-shadow cursor-pointer bg-white border-zinc-200 border rounded-2xl pt-4 pr-4 pb-4 pl-4 shadow-sm">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-medium text-zinc-400">2025/10/25-10/29</span>
+                            <div class="flex items-center gap-1.5 text-zinc-600 bg-zinc-50 px-2 py-0.5 rounded-full border border-zinc-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                                <span class="text-xs font-semibold">5,381</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right text-zinc-400"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-zinc-900 font-semibold text-sm mb-2">Paris, Art Basel</h3>
+                        <div class="flex items-center gap-1.5 text-xs text-zinc-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                            <span class="truncate max-w-[200px]">Captured by <span class="font-medium text-zinc-700">username</span> and 3,268 others</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative pl-8 mb-8 group">
+                    <div class="absolute left-0 top-[22px] w-4 h-4 bg-white border-[3px] border-zinc-200 rounded-full z-10 group-hover:border-zinc-300 transition-colors"></div>
+                    <div class="bg-white border border-zinc-200 rounded-2xl p-4 shadow-sm group-hover:shadow-md transition-shadow cursor-pointer">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-medium text-zinc-400">2025/10/25-10/29</span>
+                            <div class="flex items-center gap-1.5 text-zinc-600 bg-zinc-50 px-2 py-0.5 rounded-full border border-zinc-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" class=""></path><circle cx="12" cy="13" r="3"></circle></svg>
+                                <span class="text-xs font-semibold">5,381</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right text-zinc-400"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-zinc-900 font-semibold text-sm mb-2">Paris, Art Basel</h3>
+                        <div class="flex items-center gap-1.5 text-xs text-zinc-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                            <span class="truncate max-w-[200px]">Captured by <span class="font-medium text-zinc-700">username</span> and 3,268 others</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 (Highlighted) -->
+                <div class="relative pl-8 mb-6">
+                    <div class="absolute left-0 top-[22px] w-4 h-4 bg-white border-[3px] border-zinc-300 rounded-full z-10 shadow-[0_0_0_2px_rgba(255,255,255,1)]"></div>
+                    
+                    <!-- Floating Tag -->
+                    <div class="absolute top-[-10px] left-[42px] z-20 bg-white border border-zinc-200 text-[10px] font-semibold text-zinc-800 px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                        <span class="text-yellow-500">💛</span> You were there
+                    </div>
+
+                    <div class="overflow-hidden bg-orange-50 border-orange-200 border rounded-2xl px-4 py-4 relative shadow-sm">
+                        <div class="flex justify-between items-start mb-2 relative z-10">
+                            <span class="text-[10px] font-medium text-zinc-600">2025/10/25-10/29</span>
+                            <div class="flex items-center gap-1.5 text-zinc-800 bg-white/50 px-2 py-0.5 rounded-full border border-orange-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                                <span class="text-xs font-bold">5,381</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right text-zinc-800/50"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-zinc-900 font-bold text-sm mb-2 relative z-10">Seoul, Pipe Gallery</h3>
+                        <div class="flex items-center gap-1.5 text-xs text-zinc-700 relative z-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                            <span class="truncate max-w-[200px]">Captured by <span class="font-bold text-zinc-900">username</span> and 3,268 others</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 (Last Item - No Margin Bottom) -->
+                <div class="relative pl-8 mb-0 group">
+                    <div class="absolute left-0 top-[22px] w-4 h-4 bg-white border-[3px] border-zinc-200 rounded-full z-10 group-hover:border-zinc-300 transition-colors"></div>
+                    <div class="bg-white border border-zinc-200 rounded-2xl p-4 shadow-sm group-hover:shadow-md transition-shadow cursor-pointer opacity-75 hover:opacity-100">
+                            <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-medium text-zinc-400">2025/10/25-10/29</span>
+                            <div class="flex items-center gap-1.5 text-zinc-600 bg-zinc-50 px-2 py-0.5 rounded-full border border-zinc-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                                <span class="text-xs font-semibold">5,381</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right text-zinc-400"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-zinc-900 font-semibold text-sm mb-2">Paris, Art Basel</h3>
+                        <div class="flex items-center gap-1.5 text-xs text-zinc-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+                            <span class="truncate max-w-[200px]">Captured by <span class="font-medium text-zinc-700">username</span> and 3,268 others</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Floating Primary Button -->
+    <div class="absolute bottom-6 left-6 right-6 z-30">
+        <button class="hover:bg-zinc-800 shadow-zinc-900/10 flex active:scale-95 transition-all group font-semibold text-white bg-zinc-900 w-full h-14 border-zinc-800/50 border rounded-2xl shadow-xl gap-x-2.5 gap-y-2.5 items-center justify-center" onclick="window.location.href='/artist-page'" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+            <span class="text-sm">Support your Artist</span>
+        </button>
+    </div>
+    
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body></html>
