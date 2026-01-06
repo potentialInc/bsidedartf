@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>b side - Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=Draft2-home.html">
     <script>
-        // Redirect to Draft 2 home page
-        window.location.replace('Draft2-home.html');
+        // Clear any cached draft selection
+        if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.removeItem('currentDraft');
+        }
+        // Force redirect to Draft 2 home page
+        window.location.replace('Draft2-home.html' + '?v=' + Date.now());
     </script>
 </head>
 <body>
     <p>Redirecting to home page...</p>
     <p>If you are not redirected, <a href="Draft2-home.html">click here</a>.</p>
+    <script>
+        // Fallback redirect
+        setTimeout(function() {
+            window.location.href = 'Draft2-home.html';
+        }, 100);
+    </script>
 </body>
 </html>
 
