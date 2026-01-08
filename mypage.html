@@ -1,76 +1,69 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bSide - Interactive Profile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Geist', 'Inter', sans-serif; background-color: #050505; color: #ffffff; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        /* Input Styles */
-        .custom-input {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s ease;
-        }
-        .custom-input:focus-within {
-            border-color: rgba(168, 85, 247, 0.4);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.1);
-        }
-        
-        /* Animations */
-        .view-section {
-            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateX(20px);
-            z-index: 0;
-        }
-        
-        .view-section.active {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(0);
-            z-index: 10;
-            position: relative;
-        }
-
-        .view-section.exit-left {
-            transform: translateX(-20px);
-            opacity: 0;
-        }
-
-        /* Checkbox Custom */
-        .custom-checkbox input:checked + div {
-            background-color: #a855f7;
-            border-color: #a855f7;
-        }
-    </style>
-    
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bSide - Interactive Profile</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Geist', 'Inter', sans-serif; background-color: #050505; color: #ffffff; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+/* Glassmorphism */
+.glass-card {
+background: rgba(255, 255, 255, 0.03);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-card:hover {
+background: rgba(255, 255, 255, 0.06);
+border-color: rgba(255, 255, 255, 0.12);
+}
+/* Input Styles */
+.custom-input {
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: all 0.2s ease;
+}
+.custom-input:focus-within {
+border-color: rgba(168, 85, 247, 0.4);
+background: rgba(255, 255, 255, 0.05);
+box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.1);
+}
+/* Animations */
+.view-section {
+transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+opacity: 0;
+pointer-events: none;
+transform: translateX(20px);
+z-index: 0;
+}
+.view-section.active {
+opacity: 1;
+pointer-events: auto;
+transform: translateX(0);
+z-index: 10;
+position: relative;
+}
+.view-section.exit-left {
+transform: translateX(-20px);
+opacity: 0;
+}
+/* Checkbox Custom */
+.custom-checkbox input:checked + div {
+background-color: #a855f7;
+border-color: #a855f7;
+}
+</style>
 <link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
 <body class="min-h-screen flex items-center justify-center overflow-hidden w-full bg-[#050505] selection:bg-purple-500/30">
 
@@ -88,11 +81,9 @@
         <div id="view-main" class="view-section active">
             <!-- Header -->
             <div class="w-full px-6 pt-8 pb-2 flex justify-between items-center shrink-0">
-                <div class="flex items-center gap-2">
-                    <button class="-ml-2 flex hover:text-white hover:bg-white/5 transition-colors group text-neutral-400 w-10 h-10 rounded-full items-center justify-center" onclick="Router.navigate('home')" role="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x group-hover:scale-110 transition-transform w-[24px] h-[24px]" data-icon-replaced="true" style="color: rgb(255, 255, 255); width: 24px; height: 24px;"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-                    </button>
-                </div>
+                <button class="-ml-2 flex hover:text-white hover:bg-white/5 transition-colors group text-neutral-400 w-10 h-10 rounded-full items-center justify-center" onclick="window.location.href='index.html'" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x group-hover:scale-110 transition-transform w-[24px] h-[24px]" data-icon-replaced="true" style="color: rgb(255, 255, 255); width: 24px; height: 24px;"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
                 <span class="text-sm font-medium text-neutral-500">My Page</span>
                 <div class="w-8"></div>
             </div>
@@ -103,7 +94,8 @@
                 <!-- Profile Section -->
                 <div class="flex flex-col items-center px-6 pt-4 pb-8">
                     <div class="relative group cursor-pointer" onclick="openView('view-edit')">
-                        <div class="w-24 h-24 rounded-full p-0.5 border border-white/10 bg-white/5 overflow-hidden">
+                        <!-- Reduced size from w-24 h-24 to w-20 h-20 -->
+                        <div class="w-20 h-20 rounded-full p-0.5 border border-white/10 bg-white/5 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&amp;w=400&amp;auto=format&amp;fit=crop" id="profile-img-main" alt="Profile" class="w-full h-full rounded-full object-cover transition-transform duration-500 group-hover:scale-105">
                         </div>
                         <div class="absolute bottom-0 right-0 p-1.5 bg-[#1a1a1a] rounded-full border border-[#2a2a2a] text-white/80 group-hover:text-white transition-colors">
@@ -145,6 +137,17 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="settings-2" class="lucide lucide-settings-2 w-4 h-4"><path d="M14 17H5"></path><path d="M19 7h-9"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
                             </div>
                             <span class="text-sm font-medium text-neutral-200 group-hover:text-white">Account Setting</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-4 h-4 text-neutral-600 group-hover:text-neutral-400 transition-colors"><path d="m9 18 6-6-6-6"></path></svg>
+                    </button>
+
+                    <!-- My Collections Button -->
+                    <button class="w-full glass-card h-14 px-5 rounded-2xl flex items-center justify-between group transition-all active:scale-[0.98]">
+                        <div class="flex items-center gap-3.5">
+                            <div class="p-1.5 rounded-lg bg-white/5 text-neutral-400 group-hover:text-white group-hover:bg-white/10 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layers" class="lucide lucide-layers w-4 h-4"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                            </div>
+                            <span class="text-sm font-medium text-neutral-200 group-hover:text-white">My Collections</span>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-4 h-4 text-neutral-600 group-hover:text-neutral-400 transition-colors"><path d="m9 18 6-6-6-6"></path></svg>
                     </button>
@@ -205,7 +208,8 @@
                 <!-- Avatar Upload -->
                 <div class="flex flex-col items-center py-6">
                     <div class="relative group cursor-pointer">
-                        <div class="w-28 h-28 rounded-full p-0.5 border border-white/10 bg-white/5 overflow-hidden">
+                        <!-- Reduced size from w-28 h-28 to w-24 h-24 -->
+                        <div class="w-24 h-24 rounded-full p-0.5 border border-white/10 bg-white/5 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&amp;w=400&amp;auto=format&amp;fit=crop" id="profile-img-edit" alt="Profile" class="w-full h-full rounded-full object-cover opacity-80 group-hover:opacity-60 transition-all">
                         </div>
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -374,13 +378,5 @@
             }, 600);
         }
     </script>
-
-<script src="router.js?v=2"></script>
-<script>
-    // Set current draft to 2 when this page loads
-    if (typeof Router !== 'undefined') {
-        Router.setDraft(2);
-    }
-</script>
 
 </body></html>

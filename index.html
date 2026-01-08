@@ -1,30 +1,564 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>b side - Redirecting...</title>
-    <script>
-        // Clear any cached draft selection
-        if (typeof sessionStorage !== 'undefined') {
-            sessionStorage.removeItem('currentDraft');
-        }
-        // Force redirect to Draft 2 home page
-        window.location.replace('Draft2-home.html' + '?v=' + Date.now());
-    </script>
-</head>
-<body>
-    <p>Redirecting to home page...</p>
-    <p>If you are not redirected, <a href="Draft2-home.html">click here</a>.</p>
-    <script>
-        // Fallback redirect
-        setTimeout(function() {
-            window.location.href = 'Draft2-home.html';
-        }, 100);
-    </script>
-</body>
-</html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bSide - Art Collection</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Geist', 'Inter', sans-serif; background-color: #050505; color: #ffffff; }
+.font-serif { font-family: 'Playfair Display', serif; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+/* Subtle Gradient Border Logic */
+[style*="--border-gradient"]::before {
+content: "";
+position: absolute;
+inset: 0;
+padding: 1px;
+border-radius: var(--border-radius-before, inherit);
+-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
+background: var(--border-gradient);
+pointer-events: none;
+}
+/* Glassmorphism Utilities */
+.glass-panel {
+background: rgba(20, 20, 20, 0.6);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+/* Animations */
+@keyframes fadeInUp {
+0% { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.animate-enter {
+animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+opacity: 0;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+/* Modal Animation */
+#share-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+#share-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+#share-modal:not(.hidden) { opacity: 1; visibility: visible; pointer-events: auto; }
+#share-modal .modal-content { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease; }
+#share-modal.hidden .modal-content { transform: scale(0.95) translateY(10px); opacity: 0; }
+#share-modal:not(.hidden) .modal-content { transform: scale(1) translateY(0); opacity: 1; }
+/* Carousel Transitions */
+.carousel-item { transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+</style>
+<link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style><style id="border-gradient-shared-style">
+[style*="--border-gradient"]::before {
+content: "";
+position: absolute;
+inset: 0;
+padding: 1px;
+border-radius: var(--border-radius-before, inherit);
+-webkit-mask: linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
+background: var(--border-gradient);
+pointer-events: none;
+}</style></head>
+<body class="min-h-screen flex items-center justify-center overflow-x-hidden selection:bg-white/20 w-full">
 
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-rose-900/10 rounded-full blur-[120px]"></div>
+        <div class="absolute inset-0 flex justify-center opacity-[0.03]">
+            <div class="border-r border-white h-full mx-20"></div>
+            <div class="border-r border-white h-full mx-20"></div>
+        </div>
+    </div>
+
+    <!-- Main UI Container -->
+    <div class="relative z-10 w-full max-w-[400px] h-[840px] bg-[#080808] rounded-[40px] border border-white/10 shadow-2xl overflow-hidden ring-1 ring-white/5 flex flex-col">
+            
+        <!-- App Header -->
+        <div class="w-full px-6 pt-8 pb-4 flex justify-between items-center z-40 bg-gradient-to-b from-[#080808] to-transparent shrink-0 relative">
+            <div class=""></div>
+            <span class="-translate-x-1/2 text-xl font-medium text-white tracking-tighter absolute left-1/2" onclick="window.location.href='index.html'" role="button">bSide</span>
+            <button class="hover:text-white transition-colors text-neutral-400 relative" onclick="window.location.href='notification.html'" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" viewBox="0 0 24 24" data-icon="lucide:bell" data-width="20" data-stroke-width="1.5" class="iconify iconify--lucide w-[20px] h-[20px]" stroke-width="2" data-icon-replaced="true" style="color: rgb(255, 255, 255); width: 20px; height: 20px;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.268 21a2 2 0 0 0 3.464 0m-10.47-5.674A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" class=""></path></svg>
+                <span class="absolute top-0 right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full ring-2 ring-[#080808]"></span>
+            </button>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 w-full overflow-y-auto hide-scrollbar pb-32">
+            
+            <!-- 1. My Collections (Interactive Variable Width Carousel) -->
+            <div class="px-6 pt-6 mb-8 animate-enter delay-100">
+                
+                <div class="relative w-full aspect-[3.5/4.8]">
+                    <!-- Back Stack Layers -->
+                    <div class="absolute top-[-16px] left-6 right-6 h-full bg-[#181818] border border-white/10 border-b-0 rounded-[32px] z-0 shadow-sm opacity-60"></div>
+                    <div class="absolute top-[-8px] left-3 right-3 h-full bg-[#121212] border border-white/10 border-b-0 rounded-[32px] z-10 shadow-lg"></div>
+
+                    <!-- Main Card -->
+                    <div class="absolute inset-0 bg-[#0A0A0A] border border-white/10 rounded-[32px] z-20 flex flex-col shadow-[0_25px_50px_-12px_rgba(0,0,0,1)] overflow-hidden" style="--border-gradient: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05)); --border-radius-before: 32px;">
+                        
+                        <!-- Card Header -->
+                        <div class="flex pt-6 pr-6 pb-2 pl-6 items-start justify-between relative z-50">
+                            <h2 class="text-2xl font-normal tracking-tight text-white leading-[1.15] max-w-[85%]">
+                                My Favorite Artworks in <span class="text-neutral-400">Frieze Seoul 2025</span>
+                            </h2>
+                            <div class="relative">
+                                <button id="menu-btn" class="text-neutral-500 hover:text-white transition-colors mt-1 hover:bg-white/10 rounded-full p-1 relative z-50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" viewBox="0 0 24 24" data-icon="lucide:more-horizontal" data-width="20" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></g></svg>
+                                </button>
+                                <!-- Dropdown Menu -->
+                                <div id="menu-dropdown" class="hidden absolute right-0 top-full mt-2 w-52 bg-[#1A1A1A] border border-white/10 rounded-xl shadow-2xl shadow-black ring-1 ring-white/5 overflow-hidden z-[60] origin-top-right transition-all transform backdrop-blur-xl">
+                                    <button id="share-btn" class="w-full text-left px-4 py-3 text-sm font-medium text-neutral-300 hover:text-white hover:bg-white/5 transition-colors flex items-center gap-3 group">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-500 group-hover:text-white transition-colors"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" x2="12" y1="2" y2="15"></line></svg>
+                                        Share
+                                    </button>
+                                    <div class="h-px bg-white/5 w-full"></div>
+                                    <button class="w-full text-left px-4 py-3 text-sm font-medium text-neutral-300 hover:text-white hover:bg-white/5 transition-colors flex items-center gap-3 group">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-500 group-hover:text-white transition-colors"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                        Rename
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content (Standard Gap Flex Carousel) -->
+                        <div id="carousel-container" class="flex-1 flex items-center justify-center relative w-full overflow-hidden select-none touch-pan-y gap-5">
+                            
+                            <!-- Left: Prev Card -->
+                            <div id="card-prev" class="carousel-item flex-shrink-0 h-40 w-auto aspect-[3/4] rounded-xl border border-white/5 bg-neutral-900 opacity-40 grayscale blur-[1px] z-10 cursor-pointer hover:opacity-60 overflow-hidden transform scale-95 origin-right">
+                                <img id="img-prev" src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&amp;w=600&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover pointer-events-none" alt="Prev">
+                                <div class="absolute inset-0 bg-black/20"></div>
+                            </div>
+                            
+                            <!-- Center: Active Card (Variable Size) -->
+                            <div class="carousel-item flex-shrink-0 overflow-hidden origin-center bg-neutral-900 w-auto h-60 z-30 border-white/10 border rounded-2xl ring-white/10 ring-1 relative shadow-[0_20px_40px_-5px_rgba(0,0,0,0.6)]" style="aspect-ratio: 3 / 4" id="card-active" onclick="window.location.href='artwork-view.html'" role="button">
+                                <img id="img-active" src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" class="w-full h-full object-cover pointer-events-none" alt="Active">
+                                
+                                <!-- Active Indicator -->
+                                <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20">
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white"><polyline points="20 6 9 17 4 12" class=""></polyline></svg>
+                                </div>
+                            </div>
+
+                            <!-- Right: Next Card -->
+                            <div id="card-next" class="carousel-item flex-shrink-0 h-40 w-auto aspect-[3/4] rounded-xl border border-white/5 bg-neutral-900 opacity-40 blur-[1px] z-10 cursor-pointer hover:opacity-60 overflow-hidden transform scale-95 origin-left">
+                                <img id="img-next" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=600&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover pointer-events-none" alt="Next">
+                                <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#0A0A0A] to-transparent"></div>
+                            </div>
+
+                            <!-- Swipe Navigation Controls (Overlay) -->
+                            <div class="absolute inset-x-2 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-50">
+                                <button id="btn-prev" class="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center border border-white/5 text-white/50 transition-all cursor-pointer pointer-events-auto hover:bg-black/60 hover:text-white hover:border-white/20 hover:scale-110 active:scale-95">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+                                </button>
+                                <button id="btn-next" class="w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center border border-white/5 text-white/50 transition-all cursor-pointer pointer-events-auto hover:bg-black/60 hover:text-white hover:border-white/20 hover:scale-110 active:scale-95">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="flex flex-col pt-0 pr-6 pb-8 pl-6 items-center justify-center h-16 shrink-0 z-50">
+                            <div class="flex items-center gap-2 text-lg whitespace-nowrap overflow-hidden">
+                                <span class="font-semibold text-white tracking-tight animate-fade" id="art-title">Cool Tone</span>
+                                <span class="text-neutral-600 font-light mx-1 text-base">|</span>
+                                <span id="art-artist" class="font-normal text-neutral-300 tracking-tight animate-fade">Chansong Kim</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Recent Captures -->
+            <div class="mb-10 pl-6 animate-enter delay-200 relative">
+                <div class="flex justify-between items-end pr-6 mb-4">
+                    <h2 class="text-xs font-semibold text-neutral-500 uppercase tracking-widest">Recent Captures</h2>
+                    <span class="text-xs text-neutral-600 font-medium hover:text-white transition-colors cursor-pointer">View All</span>
+                </div>
+                
+                <div class="relative">
+                    <div class="flex gap-3 overflow-x-auto hide-scrollbar pr-12 pb-2 relative z-10">
+                        <!-- Add New Button -->
+                        <button class="shrink-0 w-16 h-16 rounded-2xl border border-dashed border-neutral-800 flex items-center justify-center text-neutral-600 hover:text-white hover:border-neutral-600 transition-all group/add bg-white/[0.02]">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" viewBox="0 0 24 24" data-icon="lucide:plus" data-width="20" data-stroke-width="1.5" class="iconify group-hover/add:scale-110 transition-transform iconify--lucide"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"></path></svg>
+                        </button>
+                        <!-- Capture Item 1 -->
+                        <div class="shrink-0 w-16 h-16 rounded-2xl overflow-hidden relative ring-1 ring-white/5 hover:ring-white/20 transition-all cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&amp;w=300&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Art">
+                        </div>
+                        <!-- Capture Item 2 -->
+                        <div class="shrink-0 w-16 h-16 rounded-2xl overflow-hidden relative ring-1 ring-white/5 hover:ring-white/20 transition-all cursor-pointer">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Art">
+                        </div>
+                        <!-- Capture Item 3 -->
+                        <div class="shrink-0 w-16 h-16 rounded-2xl overflow-hidden relative ring-1 ring-white/5 hover:ring-white/20 transition-all cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&amp;w=300&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Art">
+                        </div>
+                         <!-- Capture Item 4 -->
+                         <div class="shrink-0 w-16 h-16 rounded-2xl overflow-hidden relative ring-1 ring-white/5 hover:ring-white/20 transition-all cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&amp;w=300&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Art">
+                        </div>
+                    </div>
+                    
+                    <!-- Scroll Fade Overlay -->
+                    <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#080808] to-transparent pointer-events-none z-20"></div>
+                </div>
+            </div>
+
+            <!-- 3. Shared Collections -->
+            <div class="mb-10 px-6 animate-enter delay-300">
+                <h2 class="text-sm font-semibold tracking-tight text-white mb-4">Shared with you</h2>
+                
+                <div class="space-y-3">
+                    <!-- Shared Item 1 -->
+                    <div class="flex items-center gap-3 p-3 pr-2 rounded-2xl bg-neutral-900/40 border border-white/5 hover:bg-neutral-800/60 transition-colors group cursor-pointer backdrop-blur-sm active:scale-[0.99] duration-200">
+                        <div class="shrink-0 relative">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&amp;w=150&amp;auto=format&amp;fit=crop" class="w-10 h-10 rounded-full border border-white/10 object-cover shadow-sm" alt="Emma">
+                            <div class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-violet-500 rounded-full border-2 border-[#080808]"></div>
+                        </div>
+                        <div class="flex-1 min-w-0 flex flex-col justify-center gap-0.5">
+                            <h4 class="text-sm font-semibold text-white leading-none tracking-tight group-hover:text-violet-200 transition-colors">Shared by Emma</h4>
+                            <p class="text-xs text-neutral-400 truncate">Art Exhibition · Contemporary</p>
+                            <span class="text-[10px] text-neutral-600 font-medium">2h ago</span>
+                        </div>
+                        <div class="shrink-0 w-12 h-12 rounded-lg bg-neutral-800 overflow-hidden relative ring-1 ring-white/5 border border-white/5">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=300&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Shared Art">
+                        </div>
+                    </div>
+
+                    <!-- Shared Item 2 -->
+                    <div class="flex items-center gap-3 p-3 pr-2 rounded-2xl bg-neutral-900/40 border border-white/5 hover:bg-neutral-800/60 transition-colors group cursor-pointer backdrop-blur-sm active:scale-[0.99] duration-200">
+                        <div class="shrink-0 relative">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=150&amp;auto=format&amp;fit=crop" class="w-10 h-10 rounded-full border border-white/10 object-cover shadow-sm" alt="Alex">
+                        </div>
+                        <div class="flex-1 min-w-0 flex flex-col justify-center gap-0.5">
+                            <h4 class="text-sm font-semibold text-white leading-none tracking-tight group-hover:text-violet-200 transition-colors">Shared by Alex</h4>
+                            <p class="text-xs text-neutral-400 truncate">Neon Nights · Photography</p>
+                            <span class="text-[10px] text-neutral-600 font-medium">5h ago</span>
+                        </div>
+                        <div class="shrink-0 w-12 h-12 rounded-lg bg-neutral-800 overflow-hidden relative ring-1 ring-white/5 border border-white/5">
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c543a9e1-f226-4ced-80b0-feb8445a75b9_1600w.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Shared Art">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Recommended Artworks & Events -->
+            <div class="px-6 animate-enter delay-400 pb-12">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-sm font-semibold text-white tracking-tight">Recommended</h2>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden relative group cursor-pointer border border-white/5 ring-1 ring-white/5 hover:ring-white/20 transition-all">
+                        <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" alt="Event 1">
+                        <div class="absolute top-2 right-2 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10 shadow-lg">
+                            <span class="text-[8px] font-bold text-white uppercase tracking-wider">Event</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col gap-0.5">
+                            <span class="text-[11px] text-white font-semibold leading-tight">Frieze London</span>
+                            <span class="text-[9px] text-neutral-300 font-medium">Oct 11–15, 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden relative group cursor-pointer border border-white/5">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c543a9e1-f226-4ced-80b0-feb8445a75b9_1600w.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Rec 1">
+                        <div class="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/90 to-transparent">
+                            <span class="text-[10px] text-white/90 font-semibold">Abstract Waves</span>
+                        </div>
+                    </div>
+
+                     <div class="aspect-[3/4] rounded-2xl overflow-hidden relative group cursor-pointer border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1501472312651-726afe119ff1?q=80&amp;w=400&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Rec 2">
+                        <div class="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/90 to-transparent">
+                            <span class="text-[10px] text-white/90 font-semibold">Blue Depth</span>
+                        </div>
+                    </div>
+
+                    <div class="aspect-[3/4] rounded-2xl overflow-hidden relative group cursor-pointer border border-white/5 ring-1 ring-white/5 hover:ring-white/20 transition-all">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" alt="Event 2">
+                         <div class="absolute top-2 right-2 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10 shadow-lg">
+                            <span class="text-[8px] font-bold text-white uppercase tracking-wider">Event</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col gap-0.5">
+                            <span class="text-[11px] text-white font-semibold leading-tight">Digital Art Fair</span>
+                            <span class="text-[9px] text-neutral-300 font-medium">Nov 02, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="absolute bottom-8 left-0 right-0 flex justify-center z-50 pointer-events-none">
+            <div class="glass-panel flex animate-enter delay-500 hover:-translate-y-1 transition-transform duration-500 ease-out h-16 pointer-events-auto border-white/10 border rounded-full pr-8 pl-8 shadow-[0_4px_30px_rgba(0,0,0,0.5)] gap-x-10 gap-y-10 items-center" onclick="window.location.href='mypage.html'" role="button">
+                <button class="hover:text-white transition-colors hover:scale-110 duration-300 text-neutral-400 cursor-pointer" onclick="window.location.href='search.html'" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="22" height="22" viewBox="0 0 24 24" data-icon="lucide:search" data-width="22" data-stroke-width="1.5" class="iconify iconify--lucide w-[22px] h-[22px]" stroke-width="2"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class=""><path d="m21 21l-4.34-4.34" class=""></path><circle cx="11" cy="11" r="8" class=""></circle></g></svg>
+                </button>
+                <button class="relative -top-6 w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:scale-110 transition-transform duration-300 border-[4px] border-[#080808] z-50 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="26" height="26" viewBox="0 0 24 24" data-icon="lucide:aperture" data-width="26" data-stroke-width="1.5" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class=""><circle cx="12" cy="12" r="10"></circle><path d="m14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" class=""></path></g></svg>
+                </button>
+                <button class="text-neutral-400 hover:text-white transition-colors hover:scale-110 duration-300" onclick="window.location.href='mypage.html'" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="22" height="22" viewBox="0 0 24 24" data-icon="lucide:user" data-width="22" data-stroke-width="1.5" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class=""><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" class=""></path><circle cx="12" cy="7" r="4" class=""></circle></g></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Bottom Fade -->
+        <div class="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#080808] via-[#080808]/90 to-transparent pointer-events-none z-20"></div>
+
+    </div>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="modal-content w-full max-w-[340px] bg-[#111] rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative flex flex-col items-center">
+            
+            <button id="close-share" class="absolute top-4 right-4 text-neutral-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full p-2 z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <div class="w-full p-1 bg-gradient-to-b from-[#222] to-[#111]">
+                 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-t-[20px] rounded-b-[4px]">
+                    <img id="share-img-preview" src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" class="w-full h-full object-cover opacity-90" alt="Shared Art">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h3 id="share-title" class="text-white text-lg font-semibold tracking-tight">Cool Tone</h3>
+                        <p id="share-artist" class="text-neutral-400 text-sm">Chansong Kim</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full px-6 py-5">
+                <p class="text-xs font-medium text-neutral-500 mb-4 uppercase tracking-widest text-center">Share to</p>
+                <div class="flex justify-center gap-5">
+                    <button class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 rounded-full bg-neutral-800 border border-white/5 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all shadow-lg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                        </div>
+                        <span class="text-[10px] text-neutral-400 group-hover:text-white transition-colors">X</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-2 group">
+                         <div class="w-12 h-12 rounded-full bg-neutral-800 border border-white/5 flex items-center justify-center text-white group-hover:bg-pink-600 group-hover:text-white transition-all shadow-lg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </div>
+                        <span class="text-[10px] text-neutral-400 group-hover:text-white transition-colors">Stories</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 rounded-full bg-neutral-800 border border-white/5 flex items-center justify-center text-white group-hover:bg-green-600 group-hover:text-white transition-all shadow-lg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        </div>
+                        <span class="text-[10px] text-neutral-400 group-hover:text-white transition-colors">Chat</span>
+                    </button>
+                     <button class="flex flex-col items-center gap-2 group">
+                        <div class="w-12 h-12 rounded-full bg-neutral-800 border border-white/5 flex items-center justify-center text-white group-hover:bg-blue-600 group-hover:text-white transition-all shadow-lg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                        </div>
+                        <span class="text-[10px] text-neutral-400 group-hover:text-white transition-colors">More</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="w-full px-6 pb-6 pt-2">
+                <div class="flex items-center justify-between bg-neutral-900 border border-white/10 rounded-xl p-1.5 pl-4">
+                    <span class="text-xs text-neutral-500 truncate max-w-[160px] font-mono">bside.art/c/9283...</span>
+                    <button class="px-4 py-2 bg-white text-black text-xs font-semibold rounded-lg hover:bg-neutral-200 transition-colors">
+                        Copy Link
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Logic -->
+    <script>
+        // --- Data ---
+        const artworks = [
+            {
+                id: 1,
+                title: 'Cool Tone',
+                artist: 'Chansong Kim',
+                src: 'https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg',
+                aspect: '3/4' // Portrait
+            },
+            {
+                id: 2,
+                title: 'Midnight Echo',
+                artist: 'Sarah Jenkins',
+                src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop',
+                aspect: '4/3' // Landscape (Wider than item 1)
+            },
+            {
+                id: 3,
+                title: 'Cube Logic',
+                artist: 'David Chen',
+                src: 'https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg',
+                aspect: '1/1' // Square
+            },
+            {
+                id: 4,
+                title: 'Neon Drift',
+                artist: 'Emma Wilson',
+                src: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop',
+                aspect: '2/3' // Tall Portrait
+            },
+            {
+                id: 5,
+                title: 'Solar Flare',
+                artist: 'Marcus Roe',
+                src: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=600&auto=format&fit=crop',
+                aspect: '4/3' // Classic Landscape
+            }
+        ];
+
+        let currentIndex = 0;
+
+        // --- DOM Elements ---
+        const els = {
+            prevImg: document.getElementById('img-prev'),
+            activeImg: document.getElementById('img-active'),
+            nextImg: document.getElementById('img-next'),
+            
+            cardPrev: document.getElementById('card-prev'),
+            cardActive: document.getElementById('card-active'),
+            cardNext: document.getElementById('card-next'),
+
+            title: document.getElementById('art-title'),
+            artist: document.getElementById('art-artist'),
+
+            btnPrev: document.getElementById('btn-prev'),
+            btnNext: document.getElementById('btn-next'),
+            container: document.getElementById('carousel-container'),
+
+            // Share Modal Elements
+            shareImg: document.getElementById('share-img-preview'),
+            shareTitle: document.getElementById('share-title'),
+            shareArtist: document.getElementById('share-artist')
+        };
+
+        // --- Carousel Logic ---
+        function updateCarousel() {
+            const count = artworks.length;
+            const prevIndex = (currentIndex - 1 + count) % count;
+            const nextIndex = (currentIndex + 1) % count;
+
+            const prevArt = artworks[prevIndex];
+            const currentArt = artworks[currentIndex];
+            const nextArt = artworks[nextIndex];
+
+            // 1. Update Images
+            els.prevImg.src = prevArt.src;
+            els.activeImg.src = currentArt.src;
+            els.nextImg.src = nextArt.src;
+
+            // 2. Update Text
+            els.title.innerText = currentArt.title;
+            els.artist.innerText = currentArt.artist;
+            
+            // Share Modal Updates
+            if(els.shareImg) els.shareImg.src = currentArt.src;
+            if(els.shareTitle) els.shareTitle.innerText = currentArt.title;
+            if(els.shareArtist) els.shareArtist.innerText = currentArt.artist;
+
+            // 3. Dynamic Sizing based on Aspect Ratio
+            // We adjust the active card's aspect-ratio style to match the artwork
+            els.cardActive.style.aspectRatio = currentArt.aspect;
+
+            // Reset Animation Classes (simple fade effect for text)
+            els.title.classList.remove('animate-fade');
+            void els.title.offsetWidth; // trigger reflow
+            els.title.classList.add('animate-fade');
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % artworks.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + artworks.length) % artworks.length;
+            updateCarousel();
+        }
+
+        // --- Interaction Listeners ---
+        els.btnNext.addEventListener('click', nextSlide);
+        els.btnPrev.addEventListener('click', prevSlide);
+        els.cardNext.addEventListener('click', nextSlide);
+        els.cardPrev.addEventListener('click', prevSlide);
+
+        // --- Touch / Swipe Logic ---
+        let startX = 0;
+        let endX = 0;
+
+        els.container.addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        els.container.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            const threshold = 40; // min distance to trigger swipe
+            if (startX - endX > threshold) {
+                nextSlide();
+            } else if (endX - startX > threshold) {
+                prevSlide();
+            }
+        }
+
+        // --- Initialization ---
+        updateCarousel();
+
+
+        // --- Dropdown & Modal Logic (Existing) ---
+        const menuBtn = document.getElementById('menu-btn');
+        const menuDropdown = document.getElementById('menu-dropdown');
+        const shareBtn = document.getElementById('share-btn');
+        const shareModal = document.getElementById('share-modal');
+        const closeShare = document.getElementById('close-share');
+
+        if(menuBtn && menuDropdown) {
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuDropdown.classList.toggle('hidden');
+            });
+            document.addEventListener('click', (e) => {
+                if (!menuDropdown.contains(e.target) && !menuBtn.contains(e.target)) {
+                    menuDropdown.classList.add('hidden');
+                }
+            });
+        }
+
+        if (shareBtn && shareModal && closeShare) {
+            shareBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                menuDropdown.classList.add('hidden');
+                shareModal.classList.remove('hidden');
+            });
+            closeShare.addEventListener('click', () => {
+                shareModal.classList.add('hidden');
+            });
+            shareModal.addEventListener('click', (e) => {
+                if (e.target === shareModal) {
+                    shareModal.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body></html>
