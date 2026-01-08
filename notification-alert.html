@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bSide - Notifications</title>
+    <title>bSide - Notifications - Alerts</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,7 +91,6 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
     </style>
-
     <link id="all-fonts-link-font-roboto" rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap">
     <style id="all-fonts-style-font-roboto">
@@ -256,7 +255,7 @@
         <div class="w-full px-6 pt-8 pb-2 flex items-center gap-4 z-40 bg-[#080808] shrink-0">
             <button
                 class="hover:text-white transition-colors -ml-1 hover:bg-white/5 text-neutral-400 rounded-full pt-1 pr-1 pb-1 pl-1"
-                onclick="history.back();window.location.href='index.html'" role="button">
+                onclick="window.location.href='index.html'" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                     class="w-[24px] h-[24px]" data-icon-replaced="true"
@@ -270,11 +269,11 @@
         <!-- Filter Tabs -->
         <div class="w-full px-6 py-4 flex items-center gap-2 shrink-0 border-b border-white/[0.02]">
             <a href="notification.html"
-                class="tab-btn tab-active px-5 py-1.5 rounded-full border border-transparent transition-all text-[13px] font-medium tracking-wide">All</a>
+                class="tab-btn tab-inactive px-5 py-1.5 rounded-full border border-transparent transition-all text-[13px] font-medium tracking-wide">All</a>
             <a href="notification-event.html"
                 class="tab-btn tab-inactive px-5 py-1.5 rounded-full border transition-all text-[13px] font-medium tracking-wide">Event</a>
             <a href="notification-alert.html"
-                class="tab-btn tab-inactive px-5 py-1.5 rounded-full border transition-all text-[13px] font-medium tracking-wide">Alert</a>
+                class="tab-btn tab-active px-5 py-1.5 rounded-full border border-transparent transition-all text-[13px] font-medium tracking-wide">Alert</a>
         </div>
 
         <!-- Scrollable Notification List -->
@@ -319,35 +318,6 @@
                 </div>
             </div>
 
-            <!-- EVENT: Exhibition Chansong -->
-            <div data-category="event"
-                class="notification-item animate-enter delay-200 relative w-full p-4 rounded-2xl bg-[#121212] border border-white/10 hover:bg-[#161616] transition-colors group cursor-pointer">
-                <div
-                    class="absolute top-4 left-4 w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)] z-20">
-                </div>
-                <div class="flex gap-4">
-                    <div
-                        class="shrink-0 w-12 h-12 rounded-full bg-neutral-800 border border-white/10 overflow-hidden ring-1 ring-white/5 relative group-hover:ring-white/20 transition-all">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&amp;w=200&amp;auto=format&amp;fit=crop"
-                            alt="Artist"
-                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-1 flex flex-col pt-1">
-                        <h3 class="text-[13px] font-semibold text-white mb-1 tracking-tight">Frieze Seoul 2026</h3>
-                        <p class="text-[11px] text-neutral-400 leading-relaxed mb-2">
-                            <span class="text-white font-medium">Chansong Kim</span> will be exhibiting new works in
-                            Hall C.
-                        </p>
-                        <div class="flex items-center gap-3 mt-1">
-                            <span
-                                class="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[10px] text-neutral-300 font-medium">May
-                                23-25</span>
-                            <span class="text-[10px] text-neutral-600 font-medium tracking-wide">1d ago</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- ALERT: Security -->
             <div data-category="alert"
                 class="notification-item animate-enter delay-300 relative w-full p-4 rounded-2xl bg-[#121212] border border-white/10 hover:bg-[#161616] transition-colors group cursor-pointer">
@@ -366,34 +336,6 @@
                             New login detected from Chrome on Mac OS. Was this you?
                         </p>
                         <span class="text-[10px] text-neutral-600 font-medium tracking-wide mt-2">3h ago</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EVENT: Exhibition Simon -->
-            <div data-category="event"
-                class="notification-item animate-enter delay-400 relative w-full p-4 rounded-2xl bg-[#121212] border border-white/10 hover:bg-[#161616] transition-colors group cursor-pointer">
-                <div
-                    class="absolute top-4 left-4 w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)] z-20">
-                </div>
-                <div class="flex gap-4">
-                    <div
-                        class="shrink-0 w-12 h-12 rounded-full bg-neutral-800 border border-white/10 overflow-hidden ring-1 ring-white/5 relative group-hover:ring-white/20 transition-all">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=200&amp;auto=format&amp;fit=crop"
-                            alt="Artist"
-                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-1 flex flex-col pt-1">
-                        <h3 class="text-[13px] font-semibold text-white mb-1 tracking-tight">Upcoming Exhibition</h3>
-                        <p class="text-[11px] text-neutral-400 leading-relaxed mb-2">
-                            <span class="text-white font-medium">Simon Ko</span> at Kiaf SEOUL, Sep 04.
-                        </p>
-                        <div class="flex items-center gap-3 mt-1">
-                            <span
-                                class="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[10px] text-neutral-300 font-medium">Sep
-                                04</span>
-                            <span class="text-[10px] text-neutral-600 font-medium tracking-wide">1d ago</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -417,26 +359,6 @@
                             Your high-res export of "Summer Collection" is ready to download.
                         </p>
                         <span class="text-[10px] text-neutral-600 font-medium tracking-wide mt-2">6h ago</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EVENT: Past Event (Read) -->
-            <div data-category="event"
-                class="notification-item animate-enter delay-600 relative w-full p-4 rounded-2xl bg-[#0F0F0F] border border-white/5 hover:bg-[#161616] transition-colors group cursor-pointer opacity-80 hover:opacity-100">
-                <div class="flex gap-4">
-                    <div
-                        class="shrink-0 w-12 h-12 rounded-full bg-neutral-900 border border-white/5 overflow-hidden ring-1 ring-white/5 grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&amp;w=200&amp;auto=format&amp;fit=crop"
-                            alt="Artist"
-                            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-1 flex flex-col pt-1">
-                        <h3 class="text-[13px] font-semibold text-neutral-300 mb-1 tracking-tight">Gallery Night</h3>
-                        <p class="text-[11px] text-neutral-500 leading-relaxed mb-1">
-                            <span class="text-neutral-300 font-medium">Sarah Jenkins</span> invited you to the opening.
-                        </p>
-                        <span class="text-[10px] text-neutral-700 font-medium tracking-wide mt-2">2w ago</span>
                     </div>
                 </div>
             </div>
